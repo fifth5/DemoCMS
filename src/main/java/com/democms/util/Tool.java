@@ -1,4 +1,4 @@
-package com.democms.com.util;
+package com.democms.util;
 
 public class Tool {
 
