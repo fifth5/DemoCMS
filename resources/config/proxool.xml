@@ -22,10 +22,12 @@
         <!--没有空闲连接可以分配而在队列中等候的最大请求数,超过这个请求数的用户连接就不会被接受-->  
         <maximum-new-connections>10</maximum-new-connections>   
         <!--最少保持的空闲连接数(默认2个)-->  
-        <prototype-count>5</prototype-count>   
+        <prototype-count>1</prototype-count>   
         <!--在使用之前测试-->  
         <test-before-use>true</test-before-use>  
         <!--用于保持连接的测试语句 -->  
         <house-keeping-test-sql>select 1 from dual</house-keeping-test-sql>  
+        <statistics-log-level>INFO</statistics-log-level>
+        <Statistics>1d</Statistics>
     </proxool>  
 </something-else-entirely>   

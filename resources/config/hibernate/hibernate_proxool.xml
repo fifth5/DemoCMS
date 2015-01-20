@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</property>
+        <property name="proxool.pool_alias">demodb</property>
+        <property name="proxool.xml">/config/proxool.xml</property>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+        <!-- Drop and re-create the database schema on startup
+        <property name="hbm2ddl.auto">create</property>
+        -->
+        <mapping class="com.democms.model.po.TUser"/>
+    </session-factory>
+</hibernate-configuration>

@@ -15,7 +15,6 @@ public class TUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, length=50)
 	private String id;
 
