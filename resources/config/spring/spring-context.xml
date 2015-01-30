@@ -14,12 +14,7 @@
     ">
     
     <context:component-scan base-package="com.democms"  />    
-
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:config/db.properties</value>
-			</list>
-		</property>
-	</bean>
+	
+	<import resource="spring-db.xml" />
+	
 </beans>

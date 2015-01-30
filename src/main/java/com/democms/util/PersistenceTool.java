@@ -5,18 +5,18 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Component;
 
-@Component
-public class Tool {
+//@Component
+public class PersistenceTool {
 
 	public static  EntityManagerFactory factory = null;
 	
 	public static void main(String args[]){
-		System.out.println("hello world");
+	
 	}
 	
-	public Tool(){
-		System.out.println("tool init>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		this.factory =  Persistence.createEntityManagerFactory("demodb"); 
+	public PersistenceTool(){
+		System.out.println("PersistenceTool Init>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		PersistenceTool.factory =  Persistence.createEntityManagerFactory("demodb"); 
 	}
 
 }

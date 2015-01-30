@@ -2,6 +2,7 @@ package com.democms.controller.test;
 
 
 
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,16 +11,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.democms.model.po.TUser;
-import com.democms.util.Tool;
+import com.democms.util.PersistenceTool;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -42,25 +47,31 @@ public class ProxoolServlet extends HttpServlet {
     }
 
 
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection connection = null;
 		try {
-			/**
+			System.out.println("new test start>>>>>>>>>>>>>>>");
+		   		
+			//使用proxool连接池
+			/** 
+			 * java代码初始化
+			 */
 			//Class.forName("org.logicalcobwebs.proxool.ProxoolDriver");//数据库的驱动 org.logicalcobwebs.proxool.ProxoolDriver
 			//connection = DriverManager.getConnection("proxool.alias:com.mysql.jdbc.Driver:jdbc:mysql://127.0.0.1:3306/demodb","demo","password");
-			connection = DriverManager.getConnection("proxool.demodb");
-			PreparedStatement p = connection.prepareStatement(" select * from t_user ");
-			ResultSet set = p.executeQuery();
-			while(set.next()){
-				System.out.println(set.getString(2));
-			}
-			set.close();
-			connection.close();
-			//end proxool
-			 * 
+			/**
+			 * 配置文件中初始化
 			 */
+			//connection = DriverManager.getConnection("proxool.demodb");
+	
 			
-			
+			//spring容器中获取连接池的bean
+			/**
+			 * 推荐方法：spring注入datasource
+			 */
+			ApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());  
+			DataSource dataSource = (DataSource)applicationContext.getBean("dataSource");
+			connection = dataSource.getConnection();
 			
 		    /***
 	        //使用注解  // hibernate query
@@ -82,20 +93,29 @@ public class ProxoolServlet extends HttpServlet {
 			System.out.println("end hibernate");  
 			**/
 
-			//jpa demo
-	        
-	        EntityManager em = Tool.factory.createEntityManager();  
-	        TUser person = em.find(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); //类似于hibernate的get方法,没找到数据时，返回null  
-	        System.out.println(person.getUsername());  
-	        em.close();  
+			/**
+			 * 使用jpa配置 配置文件:META-INF/persistence.xml        
+			 */
+	        //EntityManager em = PersistenceTool.factory.createEntityManager();//在Tool初始化 sessionfactory 测试用
+	        //TUser person = em.find(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); //类似于hibernate的get方法,没找到数据时，返回null  
+	        //System.out.println(person.getUsername());  
+	        //Sem.close();  
 	        //factory.close();  
-			System.out.println("end jpa");  
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
+			PreparedStatement p = connection.prepareStatement(" select * from t_user ");
+			ResultSet set = p.executeQuery();
+			while(set.next()){
+				System.out.println("this result" +set.getRow()  + " : " + set.getString(2));
+			}
+			set.close();
+			connection.close();
+			System.out.println("new test end>>>>>>>>>>>>>>>");
+			
+		} catch (Exception e) {	
 			e.printStackTrace();
-		} 
-		System.out.println("proxool servlet");
+		} finally{
+		}
 	}
 
 
