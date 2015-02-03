@@ -21,6 +21,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.democms.model.po.TUser;
@@ -37,10 +38,11 @@ import java.sql.ResultSet;
  * Servlet implementation class ProxoolServlet
  */
 @WebServlet("/ProxoolServlet")
-public class ProxoolServlet extends HttpServlet {
+public class ProxoolServlet extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
        
 
+	
     public ProxoolServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -49,6 +51,7 @@ public class ProxoolServlet extends HttpServlet {
 
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Connection connection = null;
 		try {
 			System.out.println("new test start>>>>>>>>>>>>>>>");
@@ -68,39 +71,10 @@ public class ProxoolServlet extends HttpServlet {
 			//spring容器中获取连接池的bean
 			/**
 			 * 推荐方法：spring注入datasource
-			 */
+			 *
 			ApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());  
 			DataSource dataSource = (DataSource)applicationContext.getBean("dataSource");
 			connection = dataSource.getConnection();
-			
-		    /***
-	        //使用注解  // hibernate query
-			//Configuration config = new Configuration().configure("/config/hibernate/hibernate_jdbc.xml"); //jdbc 连接
-			Configuration config = new Configuration().configure("/config/hibernate/hibernate_proxool.xml"); //连接池连接
-			ServiceRegistry  sr = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();           	
-			SessionFactory sf = config.buildSessionFactory(sr);  			 
-			Session session = sf.openSession();  
-			//Transaction tx = session.beginTransaction();
-			//save
-			//	TUser user = new TUser();
-			//	user.setId("aaa");
-			//	session.save(user);	
-			//query
-			TUser o = (TUser)session.get(TUser.class, "a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c");
-			System.out.println("hibernate query result:username:>>>>>>>>>>>>>>"+o.getUsername());
-			//tx.commit();
-			session.close();  
-			System.out.println("end hibernate");  
-			**/
-
-			/**
-			 * 使用jpa配置 配置文件:META-INF/persistence.xml        
-			 */
-	        //EntityManager em = PersistenceTool.factory.createEntityManager();//在Tool初始化 sessionfactory 测试用
-	        //TUser person = em.find(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); //类似于hibernate的get方法,没找到数据时，返回null  
-	        //System.out.println(person.getUsername());  
-	        //Sem.close();  
-	        //factory.close();  
 			
 			
 			PreparedStatement p = connection.prepareStatement(" select * from t_user ");
@@ -110,6 +84,52 @@ public class ProxoolServlet extends HttpServlet {
 			}
 			set.close();
 			connection.close();
+			 */
+			
+		    /***
+	        //使用注解  // hibernate query
+	         * 
+	         */
+			//Configuration config = new Configuration().configure("/config/hibernate/hibernate_jdbc.xml"); //jdbc 连接
+			//Configuration config = new Configuration().configure("/config/hibernate/hibernate_proxool.xml"); //连接池连接
+			//ServiceRegistry  sr = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+			//SessionFactory sf = config.buildSessionFactory(sr);
+		
+			//ApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());  
+			//SessionFactory sf = (SessionFactory)applicationContext.getBean("sessionFactory");
+			//Session session = sf.openSession();
+			
+			//Transaction tx = session.beginTransaction();
+			//save
+			//	TUser user = new TUser();
+			//	user.setId("aaa");
+			//	session.save(user);	
+			//query
+			//TUser o = (TUser)session.get(TUser.class, "a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c");
+			//System.out.println("hibernate query result:username:>>>>>>>>>>>>>>"+o.getUsername());
+			//tx.commit();
+			//session.close();
+			//sf=null;
+			
+			//System.out.println("end hibernate");  
+			
+
+			/**
+			 * 使用jpa配置 配置文件:META-INF/persistence.xml        
+			 */
+			//EntityManagerFactory factory =  Persistence.createEntityManagerFactory("demodb"); 
+			ApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());  
+			EntityManagerFactory factory = (EntityManagerFactory)applicationContext.getBean("entityManagerFactory");
+			 
+	        EntityManager em = factory.createEntityManager();//在Tool初始化 sessionfactory 测试用
+	        TUser person = em.find(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); //类似于hibernate的get方法,没找到数据时，返回null  
+	        System.out.println(person.getUsername());  
+	        em.close();  
+	        //factory.close(); 
+			System.out.println("end jpa"); 
+			
+			
+
 			System.out.println("new test end>>>>>>>>>>>>>>>");
 			
 		} catch (Exception e) {	

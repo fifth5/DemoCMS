@@ -1,8 +1,13 @@
 package com.democms.model.po;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.Column;
 
 /**
  * The persistent class for the t_user database table.
@@ -10,7 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="t_user")
-@NamedQuery(name="TUser.findAll", query="SELECT t FROM TUser t")
+//@NamedQuery(name="TUser.findAll", query="SELECT t FROM TUser t")
 public class TUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 

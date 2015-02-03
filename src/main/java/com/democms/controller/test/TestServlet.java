@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.democms.model.po.TUser;
 import com.democms.service.test.TestService;
 
 
@@ -29,8 +30,7 @@ public class TestServlet  {
 	public String initSpringIocServlet(){
 		System.out.println("this is a spring ioc test servlet");
 		testServiceImpl.testSpringService();
-		
-		
+
 		return "/";
 	}
 
