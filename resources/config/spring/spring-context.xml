@@ -15,6 +15,19 @@
     
     <context:component-scan base-package="com.democms"  />    
 	
+	<!--  
+	<bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	    <property name="targetClass"  value="org.springframework.util.Log4jConfigurer" />
+	    <property name="targetMethod" value="initLogging" />
+	    <property name="arguments">
+	      <list>
+	         <value>classpath:config/log/log4j.properties</value>
+	      </list>
+	    </property>
+	</bean>
+	-->
+	
+	
 	<import resource="spring-db.xml" />
 	
 </beans>

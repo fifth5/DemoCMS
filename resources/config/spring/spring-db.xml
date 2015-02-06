@@ -9,17 +9,7 @@
     	http://www.springframework.org/schema/context 
     	http://www.springframework.org/schema/context/spring-context-4.0.xsd ">
 
-	<!-- ===== 读取 properties 文件方法有多种可选 ===== -->
-	<!-- 方法一 -->
-	<!-- <bean id="mappings"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		 	<property name="locations" value="classpath:config/db.properties"></property> 
-		 </bean> -->
-	<!-- 方法二 -->
-	<!-- <context:property-placeholder location="classpath:config/db.properties" />-->
-	
-	
-	<!-- ===== dataSource bean 配置  ====== -->
-	<!-- 方法一 -->	<!-- proxool 连接池 -->
+	<!-- spring datasource. -->
 	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource" >
 	    <property name="alias" value="proxool-demodb" />
 		<property name="driver" value="com.mysql.jdbc.Driver" />
@@ -27,109 +17,6 @@
 	    <property name="user" value="demo" />
 	    <property name="password" value="password" />
 	 </bean>  
-	
-	 <!--  方法二 -->
-	 <!--  
-	 <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"  
-      destroy-method="close"  
-      p:driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"  
-      p:url="jdbc:sqlserver://localhost:1433;DatabaseName=spring"  
-      p:username="sa"  
-      p:password="********"/>  
-	-->
-		 
-    <!-- 方法三 使用jndi -->
-    <!--  
-    <bean id="dataSource"  class="org.springframework.indi.JndiObjectFactoryBean"> 
-        <property name="jndiName"> 
-            <value>classpath:config/db.properties</value> 
-        </property> 
-    </bean> 
-	 -->
-	
-	<!--
-	<bean id="testDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
-	    <property name="driverClassName" value="${test.jdbc.driverClassName}"/>  
-	    <property name="url" value="${test.jdbc.url}"/>  
-	    <property name="username" value="${test.jdbc.username}"/>  
-	    <property name="password" value="${test.jdbc.password}"/>  
-	</bean>  
-	-->
-	<!--
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:config/db.properties</value>
-			</list>
-		</property>
-	</bean>
-	-->
-	<!--      
-	<bean id="mappings" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="locations" value="classpath:jdbc.properties"></property> 
-	</bean> 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-	    <property name="driverClassName" value="${jdbc.driverClassName}" />
-	    <property name="url" value="${jdbc.url}" />
-	    <property name="username" value="${jdbc.username}" />
-	    <property name="password" value="${jdbc.password}" />
-	</bean>
-	<context:property-placeholder location="classpath:jdbc.properties" />
-	-->
-	<!--  
-	<bean id="mappings"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">   
-	 	<property name="properties">  
-	    <value>  
-		    jdbc.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver  
-		    jdbcjdbc.url=jdbc:sqlserver://localhost:1433;DatabaseName=spring  
-		    jdbc.username=sa  
-		    jdbc.password=********  
-	    </value>  
-	 	</property>  
-	</bean>  
-  
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  
-	    destroy-method="close">  
-	    <property name="driverClassName" value="${jdbc.driverClassName}" />  
-	    <property name="url" value="${jdbc.url}" />  
-	    <property name="username" value="${jdbc.username}" />  
-	    <property name="password" value="${jdbc.password}" />  
-	</bean>
-	--> 
-	
-	
-	<!-- Hibernate 整合 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.jdbc.batch_size">20</prop>
-            </props>
-        </property>	
-		 
-		<property name="configLocations">
-            <list>
-           		<value>classpath:config/hibernate/hibernate_cfg.xml</value>
-            </list>
-		</property>
-		
-        <property name="packagesToScan" value="com.democms.model.po" />  
-	</bean>
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-        <property name="transactionManager" ref="transactionManager" />
-    </bean>
-	-->
-	
-	<!-- jpa
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-       <property name="persistenceUnitName" value="demodb"/>
-    </bean>
-    -->
     
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -146,8 +33,8 @@
 	</bean>
 	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence"/>
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-	<property name="generateDdl" value="false" />
-	<property name="database" value="HSQL"/>
+		<property name="generateDdl" value="false" />
+		<property name="database" value="HSQL"/>
 	</bean>
 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
 	
