@@ -21,13 +21,20 @@
 	    <property name="targetMethod" value="initLogging" />
 	    <property name="arguments">
 	      <list>
-	         <value>classpath:config/log/log4j.properties</value>
+	         <value>classpath:config/log/log4j2.properties</value>
 	      </list>
 	    </property>
 	</bean>
 	-->
-	
-	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">		
+			<list>
+				<value>config/i18n/zh_cn</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>    
+
 	<import resource="spring-db.xml" />
 	
 </beans>
