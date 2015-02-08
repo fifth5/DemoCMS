@@ -31,7 +31,7 @@ public class TestController {
 		logger.error("test  log4j" );
 		
 		DBJpaTestServiceImpl.printDBInfoServiceMethod();
-		return "/";
+		return "login";
 	}
 
 }

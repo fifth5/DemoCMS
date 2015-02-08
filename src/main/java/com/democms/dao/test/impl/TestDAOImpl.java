@@ -6,11 +6,12 @@ import javax.persistence.EntityManagerFactory;
 
 import org.springframework.stereotype.Repository;
 
+import com.democms.dao.GenericDAO;
 import com.democms.dao.test.TestDAO;
 import com.democms.model.po.TUser;
 
 @Repository
-public class TestDAOImpl implements TestDAO{
+public class TestDAOImpl extends GenericDAO<Object> implements TestDAO{
 	
 	@Resource
 	private EntityManagerFactory factory;
