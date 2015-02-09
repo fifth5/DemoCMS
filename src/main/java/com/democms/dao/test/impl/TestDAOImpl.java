@@ -11,17 +11,11 @@ import com.democms.dao.test.TestDAO;
 import com.democms.model.po.TUser;
 
 @Repository
-public class TestDAOImpl extends GenericDAO<Object> implements TestDAO{
-	
-	@Resource
-	private EntityManagerFactory factory;
+public class TestDAOImpl extends GenericDAO implements TestDAO{
 
 	@Override
 	public void printDBInfo(){ 
-		System.out.println("DemoCMS DAO>>>>>>>>>>>>>>");
-        EntityManager em = factory.createEntityManager();
-        TUser person = em.find(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); 
-        System.out.println(person.getUsername());  
-        em.close();  
+      TUser person = this.selectOneByGuid(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); 
+      System.out.println(person.getUsername());
 	}
 }

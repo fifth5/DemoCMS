@@ -1,39 +1,29 @@
 package com.democms.dao;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 
-import org.springframework.dao.support.DaoSupport;
+public class  GenericDAO {
 
+	@PersistenceContext
+	protected EntityManager entityManager;
 
-public class  GenericDAO extends DaoSupport{
-
-	@Resource
-	private EntityManagerFactory factory;
-	
-	private EntityManager entityManager;
-	
-	public GenericDAO(){
-		this.entityManager = factory.createEntityManager();
+	public <E> E selectOneByGuid(Class<E> clazz, String guid) {
+		return entityManager.find(clazz, guid);
 	}
-	
-	public Object select(Class clazz,String guid){
-		return  entityManager.find(clazz.getClass(), guid);
-	}
-
-	@Override
-	protected void checkDaoConfig() throws IllegalArgumentException {
-		// TODO Auto-generated method stub
 		
+	public <E> E insert(E entity){
+		 entityManager.persist(entity);
+		 return entity;
 	}
 	
-	/*
-	public void insert(Object enetity);
-	public void delete();
-	public void update();	
-	public void select();
-	public void selectOne();
-	public void selectList();
-	*/
+	public <E> E update(E entity){
+		entityManager.merge(entity);
+		return entity;
+	}
+	
+	public <E> boolean delete(E entity){
+		entityManager.remove(entity);
+		return true;
+	}
 }
