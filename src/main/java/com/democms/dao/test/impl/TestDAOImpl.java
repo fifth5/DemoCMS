@@ -15,7 +15,7 @@ public class TestDAOImpl extends GenericDAO implements TestDAO{
 
 	@Override
 	public void printDBInfo(){ 
-      TUser person = this.selectOneByGuid(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); 
+      TUser person = this.selectOneByGuid(TUser.class,"2383c86a-b02d-11e4-88e0-8c89a5ecb19c"); 
       System.out.println(person.getUsername());
 	}
 }
