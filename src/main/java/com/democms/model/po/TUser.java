@@ -2,9 +2,8 @@ package com.democms.model.po;
 
 import java.io.Serializable;
 
-
-
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.Column;
@@ -15,13 +14,13 @@ import javax.persistence.Column;
  */
 @Entity
 @Table(name="t_user")
-//@NamedQuery(name="TUser.findAll", query="SELECT t FROM TUser t")
+@NamedQuery(name="TUser.findAll", query="SELECT t FROM TUser t")
 public class TUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(unique=true, nullable=false, length=50)
-	private String id;
+	private String guid;
 
 	@Column(length=45)
 	private String email;
@@ -38,12 +37,12 @@ public class TUser implements Serializable {
 	public TUser() {
 	}
 
-	public String getId() {
-		return this.id;
+	public String getGuid() {
+		return this.guid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setGuid(String guid) {
+		this.guid = guid;
 	}
 
 	public String getEmail() {
