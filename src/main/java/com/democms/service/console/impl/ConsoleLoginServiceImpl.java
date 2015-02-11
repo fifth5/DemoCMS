@@ -1,5 +1,6 @@
 package com.democms.service.console.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,8 +26,9 @@ public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLo
 		TUser user = new TUser();
 		//user.setId("2383c86a-b02d-11e4-88e0-8c89a5ecb19c");
 		//TUser tuser  = userDaoImpl.selectOneByEntity(TUser.class, user);
-		
-		List<TUser> userList = userDaoImpl.selectListByEntity(TUser.class);
+		HashMap<String,Object> params = new HashMap<String, Object>();
+		params.put("guid", "16cea83c-b02d-11e4-88e0-8c89a5ecb19c");
+		List<TUser> userList = userDaoImpl.selectListByEntity(TUser.class,params);
 		System.out.println(userList.size());
 		return reslut;
 	}
