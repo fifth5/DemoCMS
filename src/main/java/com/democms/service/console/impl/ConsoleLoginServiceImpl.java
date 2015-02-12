@@ -28,7 +28,8 @@ public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLo
 		//TUser tuser  = userDaoImpl.selectOneByEntity(TUser.class, user);
 		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("guid", "16cea83c-b02d-11e4-88e0-8c89a5ecb19c");
-		List<TUser> userList = userDaoImpl.selectListByEntity(TUser.class,params);
+		//List<TUser> userList = userDaoImpl.selectList(TUser.class);
+		List<TUser> userList = userDaoImpl.selectUserListByEmail("");
 		System.out.println(userList.size());
 		return reslut;
 	}
