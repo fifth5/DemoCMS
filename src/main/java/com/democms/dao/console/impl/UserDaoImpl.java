@@ -3,6 +3,12 @@ package com.democms.dao.console.impl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
+
 import org.springframework.stereotype.Repository;
 
 import com.democms.dao.GenericDaoImpl;
@@ -16,31 +22,12 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao{
 	@Override
 	public List<TUser> selectUserListByEmail(String email){
 
-		QueryBuilder<TUser> queryBuilder = new QueryBuilder<TUser>();
-		queryBuilder.from(TUser.class);
+		QueryBuilder<TUser> queryBuilder = new QueryBuilder<TUser>(TUser.class);
 	
-	
+
 		
-		/*
-		 * 1.queryfrom(tuser);
-		 * 2.condition.equal(col,value)
-		 * 3.where.morethan(col,value)
-		 * 4.where.lessthan
-		 *  like in
-		 *  or and 
-		 *  order
-		 *  limit
-		 *  
-		 *  
-		 *  queryBuilder.from(TUser.class);
-		 *  condition.query().morethan;
-		 *  
-		 *  queryBuilder.and();
-		 *  queryBuilder.or();
-		 *  queryBuilder.order();
-		 *  
-		 */
-		
-		return this.selectList(queryBuilder);
+		return this.selectList(queryBuilder);		
 	}
+
+
 }

@@ -11,12 +11,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
 
+import com.democms.model.po.TUser;
 import com.democms.persistent.QueryBuilder;
 
 
 public abstract class  GenericDaoImpl implements IGenericDao{
-	protected CriteriaBuilder criteriaBuilder ;
+
 	
 	@PersistenceContext
 	protected EntityManager entityManager;
@@ -24,8 +27,7 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 	//protected EntityManagerFactory entityManagerFactory;
 
 	
-	public GenericDaoImpl(){
-		
+	public GenericDaoImpl(){	
 	}
 	
 	public <E> E selectOneByGuid(Class<E> clazz, String guid) {
@@ -34,9 +36,10 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 	
 	@Override
 	public <E> List<E> selectList(Class<E> clazz /*, Object[] objs*/){
-		criteriaBuilder = entityManager.getCriteriaBuilder();	
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();	
 		CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(clazz);
-		
+
+	
 		Root<E> root = criteriaQuery.from(clazz);
 		criteriaQuery.select(root);
 		
@@ -71,19 +74,27 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 	}
 	
 	public <E> List<E> selectList(QueryBuilder<E> queryBuilder){
-		criteriaBuilder = entityManager.getCriteriaBuilder();	
-		CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(queryBuilder.getClazz());
-		
-		Root<E> root = criteriaQuery.from(queryBuilder.getClazz());
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();	
+		CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(queryBuilder.getClassType());
+			
+		Root<E> root = criteriaQuery.from(queryBuilder.getClassType());
 		criteriaQuery.select(root);
 		
-		queryBuilder.setPredicate(root, criteriaBuilder);
-		
-		criteriaQuery.where(queryBuilder.getPredicate());
+		Predicate predicate = setPredicate(root, criteriaBuilder,queryBuilder);
+ 		
+		criteriaQuery.where(predicate);
 			
 		TypedQuery<E> typedQuery = entityManager.createQuery(criteriaQuery);
 		List<E> results = typedQuery.getResultList();
 		
 		return results;
 	}
+	
+	
+	private <E> Predicate setPredicate(Root<E> root, CriteriaBuilder criteriaBuilder,QueryBuilder<E> queryBuilder){
+		EntityType<E> entityType = entityManager.getMetamodel().entity(queryBuilder.getClassType());
+		
+		return criteriaBuilder.equal(root.get(entityType.getSingularAttribute("guid")),"16cea83c-b02d-11e4-88e0-8c89a5ecb19c");
+	}
+	
 }
