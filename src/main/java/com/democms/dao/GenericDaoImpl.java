@@ -20,6 +20,7 @@ import com.democms.persistent.QueryBuilder;
 
 public abstract class  GenericDaoImpl implements IGenericDao{
 
+
 	
 	@PersistenceContext
 	protected EntityManager entityManager;
@@ -97,4 +98,10 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 		return criteriaBuilder.equal(root.get(entityType.getSingularAttribute("guid")),"16cea83c-b02d-11e4-88e0-8c89a5ecb19c");
 	}
 	
+	
+	
+	protected <E> List<E> selectList(CriteriaQuery<E> criteriaQuery){
+		TypedQuery<E> typedQuery = entityManager.createQuery(criteriaQuery);
+		return typedQuery.getResultList();
+	}
 }
