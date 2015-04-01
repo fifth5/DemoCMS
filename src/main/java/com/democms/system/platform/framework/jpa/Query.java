@@ -34,11 +34,7 @@ public class Query implements Serializable {
  
     private static final long serialVersionUID = 5064932771068929342L;
  
-
-   
-    @PersistenceContext
-	protected EntityManager entityManager;
-    //private EntityManager entityManager;
+    private EntityManager entityManager;
  
     /** 要查询的模型对象 */
     private Class clazz;

@@ -9,6 +9,4 @@ public interface UserDao extends IGenericDao{
 
 	List<TUser> selectUserListByEmail(String email);
 
-	List<TUser> queryUserListByEmail(String email);
-
 }

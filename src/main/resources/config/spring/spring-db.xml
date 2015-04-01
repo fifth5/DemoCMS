@@ -20,7 +20,7 @@
     	<property name="minimumConnectionCount" value="10" />
 	 </bean>  
     
-	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence"/>
+	<bean id="persistenceProvider" class="org.hibernate.jpa.HibernatePersistenceProvider"/>
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="generateDdl" value="false" />
 		<property name="database" value="HSQL"/>

@@ -21,7 +21,8 @@
 		<param-value>/WEB-INF/classes/config/log/log4j2.xml</param-value>
 	</context-param>
 	<listener>
-		<listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+		 <!--<listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>-->
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>		 
 	</listener>
 	<!--  
 	 <filter>
