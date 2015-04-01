@@ -1,4 +1,4 @@
-package com.democms.system.platform.framework.jpa;
+package com.democms.system.platform.framework.dao;
 
 import java.util.List;
 

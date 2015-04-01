@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.democms.dao.test.TestDAO;
 import com.democms.model.po.TUser;
-import com.democms.system.platform.framework.jpa.GenericDaoImpl;
+import com.democms.system.platform.framework.dao.GenericDaoImpl;
 
 @Repository
 public class TestDAOImpl extends GenericDaoImpl implements TestDAO{

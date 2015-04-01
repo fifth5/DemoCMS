@@ -7,12 +7,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.democms.dao.console.UserDao;
+import com.democms.dao.user.UserDao;
 import com.democms.model.domain.Result;
 import com.democms.model.po.TUser;
-import com.democms.service.GenericService;
 import com.democms.service.console.ConsoleLoginService;
-import com.democms.system.platform.framework.jpa.IGenericDao;
+import com.democms.system.platform.framework.dao.IGenericDao;
+import com.democms.system.platform.framework.service.GenericService;
 
 @Service
 public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLoginService{

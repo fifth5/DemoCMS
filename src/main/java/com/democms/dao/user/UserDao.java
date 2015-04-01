@@ -1,9 +1,9 @@
-package com.democms.dao.console;
+package com.democms.dao.user;
 
 import java.util.List;
 
 import com.democms.model.po.TUser;
-import com.democms.system.platform.framework.jpa.IGenericDao;
+import com.democms.system.platform.framework.dao.IGenericDao;
 
 public interface UserDao extends IGenericDao{
 

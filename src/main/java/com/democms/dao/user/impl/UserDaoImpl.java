@@ -1,4 +1,4 @@
-package com.democms.dao.console.impl;
+package com.democms.dao.user.impl;
 
 
 import java.util.List;
@@ -13,9 +13,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
-import com.democms.dao.console.UserDao;
+import com.democms.dao.user.UserDao;
 import com.democms.model.po.*;
-import com.democms.system.platform.framework.jpa.GenericDaoImpl;
+import com.democms.system.platform.framework.dao.GenericDaoImpl;
 import com.democms.system.platform.framework.jpa.Query;
 
 @Repository
