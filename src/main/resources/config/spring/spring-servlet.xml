@@ -22,6 +22,7 @@
 
 	<!-- static resources -->
 	<mvc:resources mapping="/static/**" location="/static/"/>
+	<mvc:resources mapping="/smartAdmin/**" location="/smartAdmin/"/>
 	
 	<!-- page mapping -->
  	<mvc:view-controller path="/viewcontroller" view-name="index.jsp"/>
