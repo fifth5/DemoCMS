@@ -7,12 +7,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.democms.dao.IGenericDao;
 import com.democms.dao.console.UserDao;
 import com.democms.model.domain.Result;
 import com.democms.model.po.TUser;
 import com.democms.service.GenericService;
 import com.democms.service.console.ConsoleLoginService;
+import com.democms.system.platform.framework.jpa.IGenericDao;
 
 @Service
 public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLoginService{
@@ -29,7 +29,7 @@ public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLo
 		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("guid", "16cea83c-b02d-11e4-88e0-8c89a5ecb19c");
 		//List<TUser> userList = userDaoImpl.selectList(TUser.class);
-		List<TUser> userList = userDaoImpl.selectUserListByEmail("");
+		List<TUser> userList = userDaoImpl.queryUserListByEmail("zzt-01@163.com");
 		System.out.println(userList.size());
 		return reslut;
 	}

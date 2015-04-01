@@ -6,9 +6,9 @@ import javax.persistence.EntityManagerFactory;
 
 import org.springframework.stereotype.Repository;
 
-import com.democms.dao.GenericDaoImpl;
 import com.democms.dao.test.TestDAO;
 import com.democms.model.po.TUser;
+import com.democms.system.platform.framework.jpa.GenericDaoImpl;
 
 @Repository
 public class TestDAOImpl extends GenericDaoImpl implements TestDAO{

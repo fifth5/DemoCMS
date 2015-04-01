@@ -16,6 +16,8 @@
 	    <property name="driverUrl" value="jdbc:mysql://localhost:3306/demodb" />
 	    <property name="user" value="demo" />
 	    <property name="password" value="password" />
+    	<property name="maximumConnectionCount" value="50" />
+    	<property name="minimumConnectionCount" value="10" />
 	 </bean>  
     
 	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence"/>
