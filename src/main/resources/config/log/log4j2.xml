@@ -14,9 +14,9 @@
         <!--这个输出控制台的配置-->
         <Console name="Console" target="SYSTEM_OUT">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--  ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
             <!--这个都知道是输出日志的格式-->
-            <PatternLayout pattern="%level: %d{HH:mm:ss.SSS}  %class{36} %L %M - %msg%xEx%n"/>
+            <PatternLayout pattern="%level: %d{HH:mm:ss.SSS} %L %M - %msg%xEx%n"/>
         </Console>
         <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
         <File name="log" fileName="${LOG_HOME}/${STAT_NAME}"   append="false">
@@ -39,7 +39,18 @@
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <loggers>
         <!--建立一个默认的root的logger-->
-        <root level="trace">
+        <logger name="org.hibernate.SQL"  level="trace" additivity="false">
+            <appender-ref ref="RollingFile"/>
+            <appender-ref ref="DailyFile"/>
+            <appender-ref ref="Console"/>
+    	</logger>
+    	<logger name="org.hibernate.type"  level="trace" additivity="false">
+            <appender-ref ref="Console"/>
+    	</logger>
+    	<logger name="org.hibernate.tool.hbm2ddl"  level="trace" additivity="false">
+            <appender-ref ref="Console"/>
+    	</logger>
+        <root level="info">
             <appender-ref ref="RollingFile"/>
             <appender-ref ref="DailyFile"/>
             <appender-ref ref="Console"/>

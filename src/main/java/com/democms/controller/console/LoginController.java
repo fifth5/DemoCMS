@@ -21,13 +21,15 @@ public class LoginController {
 
 	@RequestMapping("**")
 	public String consoleLoginPage(){
-		logger.info("log info");
-		logger.warn("log warn");
-		logger.debug("log debug");
-		logger.error("log error");
-		logger.trace("log trace");
 		return "login";
-	}	
+	}
+	
+	
+	@RequestMapping("/loginPage")
+	public String loginPage(){
+		return "loginPage";
+	}
+	
 	
 	@RequestMapping("/login")
 	public String login(){

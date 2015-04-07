@@ -32,6 +32,7 @@
 		<proxool.version>0.9.1</proxool.version>
 		<mysql.version>5.0.5</mysql.version>
 		<log4j2.version>2.2</log4j2.version>
+		<apache.tile.version>3.0.5</apache.tile.version>
 	</properties>
 
 
@@ -176,6 +177,31 @@
 			<artifactId>slf4j-nop</artifactId>
 			<version>1.7.12</version>
 		</dependency>
+		
+		
+		
+		<!-- Tiles has also been published to the public Maven repository. -->
+
+		<!-- The complete Tiles dependency with all supported technologies is achievable with the following dependency declaration: -->
+		<!--<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${apache.tile.version}</version>
+		</dependency>-->
+		
+		<!-- The basic Tiles dependency with only servlet support can be added this way: -->	
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>${apache.tile.version}</version>
+		</dependency>
+		  
+		<!-- If you need a dependency to Tiles JSP support, Declare the dependency this way: -->
+		<!--<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${apache.tile.version}</version>
+		</dependency>-->
 
 	</dependencies>
 
