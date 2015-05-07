@@ -149,52 +149,33 @@
 			<version>1.2</version>
 		</dependency>
 		
-		
-			
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>2.2</version>
-		</dependency>	
-		<!-- <dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-to-slf4j</artifactId>
-			<version>${log4j2.version}</version>
-		</dependency>-->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-1.2-api</artifactId>
 			<version>2.2</version>
-		</dependency>
-		
+		</dependency>	
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.12</version>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-nop</artifactId>
-			<version>1.7.12</version>
-		</dependency>
-		
 		
 		
 		<!-- Tiles has also been published to the public Maven repository. -->
 
 		<!-- The complete Tiles dependency with all supported technologies is achievable with the following dependency declaration: -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>${apache.tile.version}</version>
-		</dependency>-->
+		</dependency>
 		
 		<!-- The basic Tiles dependency with only servlet support can be added this way: -->	
-		<dependency>
+		<!--<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-servlet</artifactId>
 			<version>${apache.tile.version}</version>
-		</dependency>
+		</dependency>-->
 		  
 		<!-- If you need a dependency to Tiles JSP support, Declare the dependency this way: -->
 		<!--<dependency>
