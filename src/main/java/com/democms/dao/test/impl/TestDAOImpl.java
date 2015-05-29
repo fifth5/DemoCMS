@@ -8,19 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import com.democms.dao.test.TestDAO;
 import com.democms.model.po.TUser;
+import com.democms.system.platform.framework.dao.GenericDaoImpl;
 
 @Repository
-public class TestDAOImpl implements TestDAO{
-	
-	@Resource
-	private EntityManagerFactory factory;
+public class TestDAOImpl extends GenericDaoImpl implements TestDAO{
 
 	@Override
 	public void printDBInfo(){ 
-		System.out.println("DemoCMS DAO>>>>>>>>>>>>>>");
-        EntityManager em = factory.createEntityManager();
-        TUser person = em.find(TUser.class,"a0c2edf7-9a2b-11e4-9ca2-8c89a5ecb19c"); 
-        System.out.println(person.getUsername());  
-        em.close();  
+      TUser person = this.selectOneByGuid(TUser.class,"2383c86a-b02d-11e4-88e0-8c89a5ecb19c"); 
+      //System.out.println(person.getUsername());
 	}
 }

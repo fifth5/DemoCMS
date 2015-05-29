@@ -38,7 +38,6 @@ public class TestServlet  {
 
 	public TestServlet() {
         super();
-		System.out.println(" init TestServlet");
    	}
 
 	

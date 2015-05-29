@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp.BasicDataSource;
+//import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,7 +25,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.democms.model.po.TUser;
-import com.democms.util.PersistenceTool;
+//import com.democms.util.PersistenceTool;
 
 import java.io.IOException;
 import java.sql.Connection;
