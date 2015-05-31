@@ -19,5 +19,13 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao{
 		 query.eq(TUser_.email, email); 
 		 return this.selectList(query);
 	}
+	
+	@Override
+	public void insertUser(TUser user) throws Exception{
+		user.setGuid("12313413242134");
+		user.setUsername("Test");
+		this.entityManager.persist(user);
+		throw new Exception("exception user");
+	}
 
 }

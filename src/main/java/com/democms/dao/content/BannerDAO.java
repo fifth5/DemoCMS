@@ -4,6 +4,6 @@ import com.democms.model.po.TBanner;
 
 public interface BannerDAO {
 
-	TBanner insertBanner(TBanner banner);
+	void insertBanner(TBanner banner) throws Exception;
 
 }

@@ -6,19 +6,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.democms.dao.content.BannerDAO;
+import com.democms.dao.user.UserDao;
 import com.democms.model.po.TBanner;
+import com.democms.model.po.TUser;
 import com.democms.service.content.BannerService;
 
 
 @Service
-@Transactional
 public class BannerServiceImpl implements BannerService {
 
 	@Resource
 	private BannerDAO bannerDAOImpl;
+	@Resource
+	private UserDao userDaoImpl;
 	
 	@Override
-	public TBanner insertBanner(TBanner banner){		
-		return bannerDAOImpl.insertBanner(banner);	
+	@Transactional
+	public TBanner insertBanner(TBanner banner) throws Exception{		
+
+		TUser user = new TUser();
+		bannerDAOImpl.insertBanner(banner);
+		userDaoImpl.insertUser(user);
+		return null;
 	}
 }

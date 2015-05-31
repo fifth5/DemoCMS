@@ -9,4 +9,6 @@ public interface UserDao extends IGenericDao{
 
 	List<TUser> selectUserListByEmail(String email);
 
+	void insertUser(TUser user) throws Exception;
+
 }

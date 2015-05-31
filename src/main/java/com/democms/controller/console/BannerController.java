@@ -25,7 +25,11 @@ public class BannerController {
 	
 	@RequestMapping("/bannerInsert")
 	public void bannerInsert(Model model, TBanner banner){
-		bannerServiceImpl.insertBanner(banner);
+		try {
+			bannerServiceImpl.insertBanner(banner);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }

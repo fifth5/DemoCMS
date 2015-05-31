@@ -4,6 +4,6 @@ import com.democms.model.po.TBanner;
 
 public interface BannerService {
 
-	TBanner insertBanner(TBanner banner);
+	TBanner insertBanner(TBanner banner) throws Exception;
 
 }

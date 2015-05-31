@@ -1,7 +1,9 @@
 package com.democms.model.po;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 
 
 /**
@@ -15,9 +17,9 @@ public class TBanner implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false, length=45)
-	private String guid;
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
+	private Integer  guid;
 
 	private int bannerId;
 
@@ -33,11 +35,11 @@ public class TBanner implements Serializable {
 	public TBanner() {
 	}
 
-	public String getGuid() {
+	public Integer  getGuid() {
 		return this.guid;
 	}
 
-	public void setGuid(String guid) {
+	public void setGuid(Integer  guid) {
 		this.guid = guid;
 	}
 

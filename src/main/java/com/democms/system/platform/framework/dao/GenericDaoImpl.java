@@ -3,7 +3,9 @@ package com.democms.system.platform.framework.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 
 import com.democms.system.platform.framework.jpa.Query;
@@ -15,8 +17,8 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 
 	@PersistenceContext
 	protected EntityManager entityManager;
-	//@Resource
-	//protected EntityManagerFactory entityManagerFactory;
+	@Resource
+	protected EntityManagerFactory entityManagerFactory;
 
 
 	public <E> E selectOneByGuid(Class<E> clazz, String guid) {
@@ -29,8 +31,14 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 	}
 
 	public <E> E insert(E entity){
-		 entityManager.persist(entity);
-		 return entity;
+//		try{
+//			entity.getClass().getMethod("setGuid", String.class).invoke(entity,  java.util.UUID.randomUUID().toString());				
+//		}catch(Exception e){
+//			
+//		}
+		entityManager.refresh(entity);
+		entityManager.persist(entity);
+		return entity;
 	}
 	
 	public <E> E update(E entity){
