@@ -3,6 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="
     	http://www.springframework.org/schema/beans 
@@ -10,7 +11,9 @@
     	http://www.springframework.org/schema/context 
     	http://www.springframework.org/schema/context/spring-context-4.0.xsd 
    		http://www.springframework.org/schema/tx
-    	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+   		http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
     	
 	<!-- spring datasource. -->
 	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource" >
@@ -41,8 +44,8 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.show_sql">false</prop>
-				<!--  <prop key="hibernate.format_sql">true</prop>-->
-				<prop key="hibernate.connection.autocommit">false</prop>
+				<!--  <prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>-->
 			</props>
 		</property>
 	</bean>
@@ -56,6 +59,9 @@
     
 
     <tx:annotation-driven transaction-manager="transactionManager" />
+    
+
+    
 </beans>
 
 
