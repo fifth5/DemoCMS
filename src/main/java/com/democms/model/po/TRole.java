@@ -17,7 +17,7 @@ public class TRole implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, length=45)
-	private String guid;
+	private int guid;
 
 	@Column(length=45)
 	private String rolename;
@@ -25,11 +25,11 @@ public class TRole implements Serializable {
 	public TRole() {
 	}
 
-	public String getGuid() {
+	public int getGuid() {
 		return this.guid;
 	}
 
-	public void setGuid(String guid) {
+	public void setGuid(int guid) {
 		this.guid = guid;
 	}
 

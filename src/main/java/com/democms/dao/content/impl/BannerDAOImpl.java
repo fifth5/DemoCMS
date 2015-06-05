@@ -14,7 +14,7 @@ public class BannerDAOImpl extends GenericDaoImpl implements BannerDAO{
 	public void insertBanner(TBanner banner) throws Exception{
 		banner.setBannerName("test");
 		banner.setBannerViewName("testViewName");
-		banner.setGuid(1000);
+		//banner.setGuid(1000);
 		//this.entityManagerFactory.createEntityManager().refresh(banner);
 		//this.entityManagerFactory.createEntityManager().persist(banner);
 

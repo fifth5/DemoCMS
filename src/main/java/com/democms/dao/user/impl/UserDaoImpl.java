@@ -22,7 +22,6 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao{
 	
 	@Override
 	public void insertUser(TUser user) throws Exception{
-		user.setGuid("12313413242134");
 		user.setUsername("Test");
 		this.entityManager.persist(user);
 		throw new Exception("exception user");

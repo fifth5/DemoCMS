@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 
 
 /**
@@ -18,8 +20,10 @@ public class TBanner implements Serializable {
 
 	@Id
 	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2") 
 	@Column(unique=true, nullable=false)
-	private Integer  guid;
+	private String  guid;
 
 	private int bannerId;
 
@@ -35,11 +39,11 @@ public class TBanner implements Serializable {
 	public TBanner() {
 	}
 
-	public Integer  getGuid() {
+	public String  getGuid() {
 		return this.guid;
 	}
 
-	public void setGuid(Integer  guid) {
+	public void setGuid(String  guid) {
 		this.guid = guid;
 	}
 
