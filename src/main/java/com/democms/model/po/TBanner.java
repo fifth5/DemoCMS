@@ -22,7 +22,7 @@ public class TBanner implements Serializable {
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue(generator="system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2") 
-	@Column(unique=true, nullable=false)
+	@Column(unique=true, nullable=false,length=45)
 	private String  guid;
 
 	private int bannerId;

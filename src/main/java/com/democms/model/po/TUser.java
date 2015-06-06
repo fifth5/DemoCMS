@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * The persistent class for the t_user database table.
  * 
@@ -21,9 +23,11 @@ public class TUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false, length=50)
-	private int guid;
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2") 
+	@Column(unique=true, nullable=false,length=45)
+	private String  guid;
+
 
 	@Column(length=45)
 	private String email;
@@ -40,11 +44,11 @@ public class TUser implements Serializable {
 	public TUser() {
 	}
 
-	public int getGuid() {
+	public String getGuid() {
 		return this.guid;
 	}
 
-	public void setGuid(int guid) {
+	public void setGuid(String guid) {
 		this.guid = guid;
 	}
 

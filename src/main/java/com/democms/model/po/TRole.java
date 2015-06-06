@@ -1,7 +1,10 @@
 package com.democms.model.po;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 /**
@@ -15,9 +18,10 @@ public class TRole implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false, length=45)
-	private int guid;
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2") 
+	@Column(unique=true, nullable=false,length=45)
+	private String  guid;
 
 	@Column(length=45)
 	private String rolename;
@@ -25,11 +29,11 @@ public class TRole implements Serializable {
 	public TRole() {
 	}
 
-	public int getGuid() {
+	public String getGuid() {
 		return this.guid;
 	}
 
-	public void setGuid(int guid) {
+	public void setGuid(String guid) {
 		this.guid = guid;
 	}
 
