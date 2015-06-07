@@ -31,12 +31,6 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 	}
 
 	public <E> E insert(E entity){
-//		try{
-//			entity.getClass().getMethod("setGuid", String.class).invoke(entity,  java.util.UUID.randomUUID().toString());				
-//		}catch(Exception e){
-//			
-//		}
-		entityManager.refresh(entity);
 		entityManager.persist(entity);
 		return entity;
 	}

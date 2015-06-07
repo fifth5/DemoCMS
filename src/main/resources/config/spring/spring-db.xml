@@ -63,10 +63,24 @@
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="java.lang.Exception.class" />
+		</tx:attributes>
+ 	</tx:advice>
+ 
+    <aop:config>  
+        <aop:aspect id="TestAspect" ref="aspectBean">  
+            <!--配置com.spring.service包下所有类或接口的所有方法-->  
+            <aop:pointcut id="businessService" expression="execution(* com.democms.service.*.*.*(..))" />  
+            <aop:before pointcut-ref="businessService" method="doBefore"/>  
+            <aop:after pointcut-ref="businessService" method="doAfter"/>  
+            <aop:around pointcut-ref="businessService" method="doAround"/>  
+            <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
+        </aop:aspect>  
+    </aop:config>  
     
  
-    
-    
 </beans>
 
 

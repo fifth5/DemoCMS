@@ -13,17 +13,8 @@ public class BannerDAOImpl extends GenericDaoImpl implements BannerDAO{
 	@Override
 	public void insertBanner(TBanner banner) throws Exception{
 		banner.setBannerName("test");
-		banner.setBannerViewName("testViewName");
-		//banner.setGuid(1000);
-		//this.entityManagerFactory.createEntityManager().refresh(banner);
-		//this.entityManagerFactory.createEntityManager().persist(banner);
-
-			this.entityManager.persist(banner);
-			System.out.println("hello world");
-			
-			//throw new Exception("exception");
-
-		
+		banner.setBannerViewName("testViewName");	
+		this.insert(banner);
 	}
 	
 	

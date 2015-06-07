@@ -21,12 +21,12 @@ public class BannerServiceImpl implements BannerService {
 	private UserDao userDaoImpl;
 	
 	@Override
-	@Transactional(rollbackFor=Exception.class)
+	@Transactional//(rollbackFor=Exception.class)
 	public TBanner insertBanner(TBanner banner) throws Exception{		
 
 		TUser user = new TUser();
 		bannerDAOImpl.insertBanner(banner);
-		//userDaoImpl.insertUser(user);
+		userDaoImpl.insertUser(user);
 		return null;
 	}
 }
