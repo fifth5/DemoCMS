@@ -170,11 +170,7 @@
 		</dependency>
 		-->
 		
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
-		</dependency>
+
 		
 		
 		<!-- log4j -->
@@ -215,7 +211,13 @@
 			<version>1.7.12</version>
 		</dependency>
 		
-		
+		<!--  
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+		-->
 		<!-- Tiles has also been published to the public Maven repository. -->
 
 		<!-- The complete Tiles dependency with all supported technologies is achievable with the following dependency declaration: -->
