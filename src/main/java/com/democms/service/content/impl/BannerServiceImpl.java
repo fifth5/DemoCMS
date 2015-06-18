@@ -13,6 +13,7 @@ import com.democms.service.content.BannerService;
 
 
 @Service
+@Transactional
 public class BannerServiceImpl implements BannerService {
 
 	@Resource
@@ -21,7 +22,7 @@ public class BannerServiceImpl implements BannerService {
 	private UserDao userDaoImpl;
 	
 	@Override
-	@Transactional//(rollbackFor=Exception.class)
+	@Transactional//(rollbackFor=java.lang.Exception.class)
 	public TBanner insertBanner(TBanner banner) throws Exception{		
 
 		TUser user = new TUser();

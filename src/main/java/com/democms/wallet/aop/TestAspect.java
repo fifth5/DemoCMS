@@ -3,6 +3,7 @@ package com.democms.wallet.aop;
 import org.aspectj.lang.JoinPoint;  
 import org.aspectj.lang.ProceedingJoinPoint; 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component(value="aspectBean")
 public class TestAspect {  
@@ -20,7 +21,11 @@ public class TestAspect {
     }  
   
     public void doBefore(JoinPoint jp) {  
-        System.out.println("log Begining method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());  
+        System.out.println(">>>>>>>>>>>>>>>>>log Begining method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());  
+//        Class s = jp.getSignature().getDeclaringType();  
+//        Transactional auth = (Transactional) jp.getSignature().getDeclaringType()  
+//                .getAnnotation(Transactional.class);  
+//        System.out.println(auth.getClass().getName());
     }  
   
     public void doThrowing(JoinPoint jp, Throwable ex) {  

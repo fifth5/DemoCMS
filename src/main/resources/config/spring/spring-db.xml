@@ -77,7 +77,7 @@
 	</aop:config>
 	-->
 	
- 	<bean id="ss" class="org.springframework.aop.support.StaticMethodMatcherPointcut"></bean>
+ 	
     <aop:config>  
         <aop:aspect id="TestAspect" ref="aspectBean">  
             <!--配置com.spring.service包下所有类或接口的所有方法   -->
