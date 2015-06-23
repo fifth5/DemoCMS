@@ -159,6 +159,13 @@
 			<version>${mysql.version}</version>
 		</dependency>
 
+		<!-- mongodb -->
+	    <dependency>
+	        <groupId>org.mongodb</groupId>
+	        <artifactId>mongodb-driver</artifactId>
+	        <version>3.0.2</version>
+	    </dependency>
+	    
 		<!-- spring config -->
 		<dependency>
 			<groupId>org.springframework</groupId>
