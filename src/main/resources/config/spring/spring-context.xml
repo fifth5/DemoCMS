@@ -22,7 +22,13 @@
 			</list>
 		</property>
 		<property name="defaultEncoding" value="utf-8" />
-	</bean>    
+	</bean>
+	
+	<bean id="propertyConfigurer"    
+         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
+       <property name="ignoreUnresolvablePlaceholders" value="true" />  
+       <property name="location" value="classpath:properties/config.properties"/>    
+   </bean>      
 
 	<import resource="spring-db.xml" />
 	

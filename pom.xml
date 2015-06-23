@@ -18,8 +18,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-	</repositories>
-
+	</repositories> 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sevlet.api.version>3.1.0</sevlet.api.version>
@@ -33,16 +32,96 @@
 		<mysql.version>5.1.35</mysql.version>
 		<log4j2.version>2.2</log4j2.version>
 		<apache.tile.version>3.0.5</apache.tile.version>
-	</properties>
+	</properties>  
+	<profiles> 
+		<profile>  
+	        <id>development</id>
+	        <properties>  
+				<java.version>1.7</java.version>
+				<profiles.active>development</profiles.active> 
+	        </properties> 
+	        <activation>  
+	            <activeByDefault>true</activeByDefault>  
+	        </activation>  
+		</profile>
+	    <profile>  
+	        <id>production</id>  
+	        <properties>  
+				<java.version>1.7</java.version>
+	            <profiles.active>production</profiles.active>  
+	        </properties>  
+	    </profile>  
+	</profiles>
+	<build>
+	    <!-- 主资源目录 -->  
+        <resources>  
+            <resource>  
+                <directory>src/main/resources</directory>   
+                <!-- <includes><include>*.xml</include></includes> --> 
+                <excludes>  
+	                <exclude>**/*.properties</exclude>     
+                </excludes>   
+                <!--<targetPath>${build.outputDirectory}</targetPath>-->  
+                <filtering>true</filtering>                  
+            </resource>            
+	        <resource> 
+	        	<targetPath>properties/</targetPath> 
+	            <directory>src/main/resources/properties/${profiles.active}</directory>  
+	        </resource>  
+        </resources>  
+                    
+		<plugins>
+			<plugin>  
+		   		<groupId>org.apache.maven.plugins</groupId>  
+				<artifactId>maven-resources-plugin</artifactId>  
+		   		<version>2.6</version>  
+		   		<configuration>  
+		       		<includeEmptyDirs>false</includeEmptyDirs>  
+		       	</configuration>
+       		</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+			        <compilerArguments>
+			            <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+			        </compilerArguments>
+				</configuration>
+			</plugin>							
+			<plugin>
+			    <groupId>org.bsc.maven</groupId>
+			    <artifactId>maven-processor-plugin</artifactId>
+			    <version>2.2.4</version>
+			    <executions>
+			        <execution>
+			            <id>process</id>
+			            <goals>
+			                <goal>process</goal>
+			            </goals>
+			            <phase>compile</phase>
+			            <configuration>
+			                <!-- source output directory -->
+			                <outputDirectory>src/metamodel/java</outputDirectory>
+					        <processors>
+					          <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+					        </processors>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+			
 
-
+		</plugins>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
 		<!-- -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -56,7 +135,6 @@
 			<version>${jsp.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -75,8 +153,6 @@
 			<artifactId>proxool-cglib</artifactId>
 			<version>${proxool.version}</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -119,8 +195,6 @@
 			<artifactId>spring-aop</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
-
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -147,22 +221,17 @@
 			<artifactId>hibernate-envers</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
-
 		<!--  		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
 			<version>3.5.6-Final</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>3.2.0.Final</version>
 		</dependency>
-		
-		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>ejb3-persistence</artifactId>
@@ -170,9 +239,11 @@
 		</dependency>
 		-->
 		
-
-		
-		
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
 		<!-- log4j -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -195,12 +266,6 @@
 			<version>${log4j2.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-1.2-api</artifactId>
 			<version>2.2</version>
@@ -210,7 +275,6 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.12</version>
 		</dependency>
-		
 		<!--  
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -218,15 +282,14 @@
 			<version>1.7.12</version>
 		</dependency>
 		-->
+		
 		<!-- Tiles has also been published to the public Maven repository. -->
-
 		<!-- The complete Tiles dependency with all supported technologies is achievable with the following dependency declaration: -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>${apache.tile.version}</version>
-		</dependency>
-		
+		</dependency>	
 		<!-- The basic Tiles dependency with only servlet support can be added this way: -->	
 		<!--<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -243,44 +306,5 @@
 
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-			        <compilerArguments>
-			            <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-			        </compilerArguments>
-				</configuration>
-			</plugin>
-							
-			<plugin>
-			    <groupId>org.bsc.maven</groupId>
-			    <artifactId>maven-processor-plugin</artifactId>
-			    <version>2.2.4</version>
-			    <executions>
-			        <execution>
-			            <id>process</id>
-			            <goals>
-			                <goal>process</goal>
-			            </goals>
-			            <phase>compile</phase>
-			            <configuration>
-			                <!-- source output directory -->
-			                <outputDirectory>src/metamodel/java</outputDirectory>
-					        <processors>
-					          <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-					        </processors>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>
-			
-
-		</plugins>
-	</build>
+	
 </project>
