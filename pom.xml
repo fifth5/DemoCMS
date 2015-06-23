@@ -50,7 +50,14 @@
 				<java.version>1.7</java.version>
 	            <profiles.active>production</profiles.active>  
 	        </properties>  
-	    </profile>  
+	    </profile>
+	    <profile>  
+	        <id>ace_production</id>  
+	        <properties>  
+				<java.version>1.7</java.version>
+	            <profiles.active>ace_production</profiles.active>  
+	        </properties>  
+	    </profile>    
 	</profiles>
 	<build>
 	    <!-- 主资源目录 -->  
