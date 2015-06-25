@@ -66,7 +66,7 @@
                 <directory>src/main/resources</directory>   
                 <!-- <includes><include>*.xml</include></includes> --> 
                 <excludes>  
-	                <exclude>**/*.properties</exclude>     
+	                <exclude>**/*config.properties</exclude>     
                 </excludes>   
                 <!--<targetPath>${build.outputDirectory}</targetPath>-->  
                 <filtering>true</filtering>                  

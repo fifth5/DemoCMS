@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration status="error">
+<Configuration name="log4j2Config" status="trace" monitorInterval="30" strict="true" advertiser="multicastdns">
     <!--先定义所有的appender-->  
     <properties>  
         <property name="LOG_HOME">D:/Logs/DemoCMS/</property>  
         <!-- 日志备份目录 -->  
-        <property name="BACKUP_HOME">{LOG_HOME}/backup</property>  
-        <property name="STAT_NAME">DemoCMS_stat</property>  
+        <property name="BACKUP_HOME">${LOG_HOME}/backup</property>  
+        <property name="STAT_NAME">DemoCMS_temp</property>  
         <property name="SERVER_NAME">DemoCMS</property>  
         <property name="SERVER_DAILY">DemoCMS_DAILY</property>  
         
     </properties> 
-    <appenders>
-        <!--这个输出控制台的配置-->
+    <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-            <!--  ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
-            <!--这个都知道是输出日志的格式-->
-            <PatternLayout pattern="%level: %d{HH:mm:ss.SSS} %L %M - %msg%xEx%n"/>
+            <PatternLayout pattern="%-5level: %d{HH:mm:ss.SSS} %L %M - %msg%xEx%n"/>
         </Console>
-        <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
-        <File name="log" fileName="${LOG_HOME}/${STAT_NAME}"   append="false">
+
+		<!-- 
+        <File name="ChainsawLog" fileName="${LOG_HOME}/${STAT_NAME}.log"  append="false">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
         </File>
-
-        <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
-        <RollingFile name="RollingFile" fileName="${LOG_HOME}/${SERVER_NAME}"  filePattern="${LOG_HOME}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
-            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread][ %class{36}][%file:%line]%L %M - %msg%n"/>
-            <SizeBasedTriggeringPolicy size="1MB"/>
-        </RollingFile>
-        
+         -->
+		<Appender type="File" name="ChainsawLog" fileName="${LOG_HOME}/${STAT_NAME}.log" append="false">
+		  	<Layout type="PatternLayout">
+		    	<Pattern>%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n</Pattern>
+		  	</Layout>
+		</Appender>
+         
         <RollingRandomAccessFile name="DailyFile" fileName="${LOG_HOME}/${SERVER_DAILY}"  filePattern="${LOG_HOME}/${SERVER_DAILY}.%d{yyyy-MM-dd}.log">  
             <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread][ %class{36}][%file:%line]%L %M - %msg%n" />  
             <Policies>  
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />  
             </Policies>  
         </RollingRandomAccessFile>  
-    </appenders>
-    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
-    <loggers>
-        <!--建立一个默认的root的logger-->
-        <logger name="org.hibernate.SQL"  level="trace" additivity="false">
-            <appender-ref ref="RollingFile"/>
-            <appender-ref ref="DailyFile"/>
-            <appender-ref ref="Console"/>
-    	</logger>
-    	<logger name="org.hibernate.type"  level="trace" additivity="false">
-            <appender-ref ref="Console"/>
-    	</logger>
-    	<logger name="org.hibernate.tool.hbm2ddl"  level="trace" additivity="false">
-            <appender-ref ref="Console"/>
-    	</logger>
-        <root level="info">
-            <appender-ref ref="RollingFile"/>
-            <appender-ref ref="DailyFile"/>
-            <appender-ref ref="Console"/>
-        </root>
-    </loggers>
-</configuration>
+    </Appenders>
+    <Loggers>
+        <Root level="info" >
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="DailyFile"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ChainsawLog"/>
+        </Root>
+        <Logger name="org.hibernate.SQL"  level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DailyFile"/>
+            <AppenderRef ref="ChainsawLog"/>
+    	</Logger>
+    	<Logger name="org.hibernate.type"  level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DailyFile"/>
+            <AppenderRef ref="ChainsawLog"/>
+    	</Logger>
+    	<Logger name="org.hibernate.tool.hbm2ddl"  level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DailyFile"/>
+            <AppenderRef ref="ChainsawLog"/>
+    	</Logger>
+    </Loggers>
+</Configuration>
