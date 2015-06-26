@@ -2,7 +2,7 @@
 <Configuration name="log4j2Config" status="trace" monitorInterval="30" strict="true" advertiser="multicastdns">
     <!--先定义所有的appender-->  
     <properties>  
-        <property name="LOG_HOME">D:/Logs/DemoCMS/</property>  
+        <property name="LOG_HOME">$${bundle:properties.config:log4j2.logPath}</property>  
         <!-- 日志备份目录 -->  
         <property name="BACKUP_HOME">${LOG_HOME}/backup</property>  
         <property name="STAT_NAME">DemoCMS_temp</property>  
@@ -34,8 +34,8 @@
         </RollingRandomAccessFile>  
     </Appenders>
     <Loggers>
-        <Root level="info" >
-            <AppenderRef ref="RollingFile"/>
+        <Root level="${bundle:properties.config:log4j2.root.level}" >
+            <!--<AppenderRef ref="RollingFile"/>-->
             <AppenderRef ref="DailyFile"/>
             <AppenderRef ref="Console"/>
             <AppenderRef ref="ChainsawLog"/>

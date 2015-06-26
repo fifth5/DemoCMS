@@ -52,6 +52,13 @@
 	        </properties>  
 	    </profile>
 	    <profile>  
+	        <id>bae_production</id>  
+	        <properties>  
+				<java.version>1.7</java.version>
+	            <profiles.active>bae_production</profiles.active>  
+	        </properties>  
+	    </profile> 
+	    <profile>  
 	        <id>ace_production</id>  
 	        <properties>  
 				<java.version>1.7</java.version>
@@ -85,19 +92,7 @@
 		   		<configuration>  
 		       		<includeEmptyDirs>false</includeEmptyDirs>  
 		       	</configuration>
-       		</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-			        <compilerArguments>
-			            <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-			        </compilerArguments>
-				</configuration>
-			</plugin>							
+       		</plugin>					
 			<plugin>
 			    <groupId>org.bsc.maven</groupId>
 			    <artifactId>maven-processor-plugin</artifactId>
@@ -120,7 +115,34 @@
 			    </executions>
 			</plugin>
 			
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				       <compilerArguments>
+				           <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+				       </compilerArguments>
+				</configuration>
+				<executions>
+				  <execution>
+				    <id>log4j-plugin-processor</id>
+				    <goals>
+				      <goal>compile</goal>
+				    </goals>
+				    <phase>process-classes</phase>
+				    <configuration>
+				      <proc>only</proc>
+				      <annotationProcessors>
+				        <annotationProcessor>org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor</annotationProcessor>
+				      </annotationProcessors>
+				    </configuration>
+				  </execution>
+				</executions>
+			</plugin>
+          
 		</plugins>
 	</build>
 	<dependencies>
@@ -318,6 +340,12 @@
 			<version>${apache.tile.version}</version>
 		</dependency>-->
 
+		<dependency>
+			<groupId>javax.jmdns</groupId>
+			<artifactId>jmdns</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		
 	</dependencies>
 
 	
