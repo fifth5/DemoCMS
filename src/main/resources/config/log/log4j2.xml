@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration name="log4j2Config" status="trace" monitorInterval="30" strict="true" advertiser="multicastdns">
+<Configuration name="log4j2Config" status="error" monitorInterval="30" strict="true" advertiser="multicastdns">
     <!--先定义所有的appender-->  
     <properties>  
         <property name="LOG_HOME">$${bundle:properties.config:log4j2.logPath}</property>  
@@ -15,11 +15,6 @@
             <PatternLayout pattern="%-5level: %d{HH:mm:ss.SSS} %L %M - %msg%xEx%n"/>
         </Console>
 
-		<!-- 
-        <File name="ChainsawLog" fileName="${LOG_HOME}/${STAT_NAME}.log"  append="false">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
-        </File>
-         -->
 		<Appender type="File" name="ChainsawLog" fileName="${LOG_HOME}/${STAT_NAME}.log" append="false">
 		  	<Layout type="PatternLayout">
 		    	<Pattern>%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n</Pattern>
@@ -32,28 +27,37 @@
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />  
             </Policies>  
         </RollingRandomAccessFile>  
+
+	    <NoSql name="MongoDbAppender">
+	      	<MongoDb databaseName="log4j2" collectionName="applicationLogs" server="localhost:27017" username="demo" password="password" />
+	    </NoSql>
+
+        
     </Appenders>
     <Loggers>
-        <Root level="${bundle:properties.config:log4j2.root.level}" >
-            <!--<AppenderRef ref="RollingFile"/>-->
-            <AppenderRef ref="DailyFile"/>
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="ChainsawLog"/>
-        </Root>
         <Logger name="org.hibernate.SQL"  level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="DailyFile"/>
             <AppenderRef ref="ChainsawLog"/>
+            <AppenderRef ref="MongoDbAppender"/>
     	</Logger>
     	<Logger name="org.hibernate.type"  level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="DailyFile"/>
             <AppenderRef ref="ChainsawLog"/>
+            <AppenderRef ref="MongoDbAppender"/>
     	</Logger>
     	<Logger name="org.hibernate.tool.hbm2ddl"  level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="DailyFile"/>
             <AppenderRef ref="ChainsawLog"/>
+            <AppenderRef ref="MongoDbAppender"/>
     	</Logger>
+        <Root level="${bundle:properties.config:log4j2.root.level}" >
+            <AppenderRef ref="DailyFile"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ChainsawLog"/>
+            <AppenderRef ref="MongoDbAppender"/>
+        </Root>
     </Loggers>
 </Configuration>
