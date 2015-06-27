@@ -24,6 +24,19 @@ public class MongoDBBasic {
     private static String serverName = host + ":" + port;
     
     
+    public static DB getNewMongoClient() throws UnknownHostException{
+    	
+        MongoClient mongoClient = new MongoClient(new ServerAddress(
+                serverName),
+            Arrays.asList(MongoCredential.createMongoCRCredential(
+                    username, databaseName, password.toCharArray())),
+            new MongoClientOptions.Builder().cursorFinalizerEnabled(
+                false).build());
+		    DB mongoDB = mongoClient.getDB(databaseName);
+		    mongoDB.authenticate(username, password.toCharArray());
+		    return mongoDB;
+    }
+    
     protected static void mongoDBConnector() throws UnknownHostException {
 
             /******2. 接着连接并选择数据库名为databaseName的服务器******/
