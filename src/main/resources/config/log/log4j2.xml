@@ -29,9 +29,11 @@
         </RollingRandomAccessFile>  
 
 	    <NoSql name="MongoDbAppender">
-	      	<MongoDb databaseName="log4j2" collectionName="applicationLogs" server="localhost:27017" username="demo" password="password" />
+	      	<MongoDb databaseName="${bundle:properties.config:mongodb.name}" 
+	      	collectionName="${bundle:properties.config:mongodb.log4j2.collection}" 
+	      	server="${bundle:properties.config:mongodb.url}:${bundle:properties.config:mongodb.port}" 
+	      	username="${bundle:properties.config:mongodb.user}" password="${bundle:properties.config:mongodb.password}" />
 	    </NoSql>
-
         
     </Appenders>
     <Loggers>
