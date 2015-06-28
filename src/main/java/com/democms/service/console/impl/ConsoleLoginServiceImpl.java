@@ -22,6 +22,8 @@ public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLo
 	
 	@Override
 	public Result checkUser(){
+
+		Result reslut = null;
 		//TUser tuser  = userDaoImpl.selectOneByGuid(TUser.class, "2383c86a-b02d-11e4-88e0-8c89a5ecb19c");
 		TUser user = new TUser();
 		//user.setId("2383c86a-b02d-11e4-88e0-8c89a5ecb19c");

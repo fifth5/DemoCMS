@@ -10,12 +10,12 @@ import com.democms.dao.user.UserDao;
 import com.democms.model.po.TBanner;
 import com.democms.model.po.TUser;
 import com.democms.service.content.BannerService;
+import com.democms.system.platform.framework.service.GenericService;
 import com.democms.system.platform.framework.util.SpringPropertyResourceReader;
 
 
 @Service
-@Transactional
-public class BannerServiceImpl implements BannerService {
+public class BannerServiceImpl extends GenericService implements BannerService {
 
 	@Resource
 	private BannerDAO bannerDAOImpl;
@@ -23,7 +23,6 @@ public class BannerServiceImpl implements BannerService {
 	private UserDao userDaoImpl;
 	
 	@Override
-	@Transactional//(rollbackFor=java.lang.Exception.class)
 	public TBanner insertBanner(TBanner banner) throws Exception{		
 
 		TUser user = new TUser();
