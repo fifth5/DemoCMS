@@ -10,6 +10,7 @@ import com.democms.dao.user.UserDao;
 import com.democms.model.po.TBanner;
 import com.democms.model.po.TUser;
 import com.democms.service.content.BannerService;
+import com.democms.system.platform.framework.util.SpringPropertyResourceReader;
 
 
 @Service
@@ -27,6 +28,8 @@ public class BannerServiceImpl implements BannerService {
 
 		TUser user = new TUser();
 		bannerDAOImpl.insertBanner(banner);
+		String ssss = SpringPropertyResourceReader.getProperty("mysql.version");
+		System.out.println(">>>>>>"+ssss);
 		userDaoImpl.insertUser(user);
 		return null;
 	}

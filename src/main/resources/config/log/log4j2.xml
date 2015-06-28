@@ -28,19 +28,18 @@
             </Policies>  
         </RollingRandomAccessFile>  
 
-		<!--  
+		<!--
 	    <NoSql name="MongoDbAppender">
 	      	<MongoDb databaseName="${bundle:properties.config:mongodb.name}" 
 	      	collectionName="${bundle:properties.config:mongodb.log4j2.collection}" 
 	      	server="${bundle:properties.config:mongodb.url}:${bundle:properties.config:mongodb.port}" 
 	      	username="${bundle:properties.config:mongodb.user}" password="${bundle:properties.config:mongodb.password}" />
 	    </NoSql>
-	    -->
+        -->
 	    <NoSql name="MongoDbAppender">
-	     	<MongoDb collectionName="applicationLog" factoryClassName="com.democms.system.platform.framework.mongodb.MongoDBBasic"
+	     	<MongoDb collectionName="${bundle:properties.config:mongodb.log4j2.collection}" factoryClassName="com.democms.system.platform.framework.mongodb.MongoDBBasic"
 	               factoryMethodName="getNewMongoClient" />
 	    </NoSql>
-        
     </Appenders>
     <Loggers>
         <Logger name="org.hibernate.SQL"  level="trace" additivity="false">

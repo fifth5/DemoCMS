@@ -24,8 +24,7 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 	
-	<bean id="propertyConfigurer"    
-         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
+	<bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
        <property name="ignoreUnresolvablePlaceholders" value="true" />  
        <property name="location" value="classpath:properties/config.properties"/>    
    </bean>      
