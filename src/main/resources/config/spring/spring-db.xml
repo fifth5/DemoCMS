@@ -23,7 +23,7 @@
 	    <property name="user" value="${dataSource.user}" />
 	    <property name="password" value="${dataSource.password}" />
     	<property name="maximumConnectionCount" value="50" />
-    	<property name="minimumConnectionCount" value="10" />
+    	<property name="minimumConnectionCount" value="0" />
     	<property name="houseKeepingSleepTime" value="15000" /> 
     	 <property name="maximumConnectionLifetime" value="20000"/> 
 	 </bean>  
