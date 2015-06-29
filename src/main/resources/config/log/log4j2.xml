@@ -60,6 +60,12 @@
             <AppenderRef ref="ChainsawLog"/>
             <AppenderRef ref="MongoDbAppender"/>
     	</Logger>
+    	<Logger name="org.logicalcobwebs.proxool"  level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DailyFile"/>
+            <AppenderRef ref="ChainsawLog"/>
+            <AppenderRef ref="MongoDbAppender"/>
+    	</Logger>
         <Root level="${bundle:properties.config:log4j2.root.level}" >
             <AppenderRef ref="DailyFile"/>
             <AppenderRef ref="Console"/>

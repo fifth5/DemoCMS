@@ -15,7 +15,7 @@ public class BannerDAOImpl extends GenericDaoImpl implements BannerDAO{
 		banner.setBannerName("test");
 		banner.setBannerViewName("testViewName");	
 		//Thread.sleep(300000);
-		
+		this.insert(banner);
 		//throw new RuntimeException();
 	}
 	

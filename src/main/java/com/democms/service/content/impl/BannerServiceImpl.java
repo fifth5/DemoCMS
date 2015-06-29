@@ -23,6 +23,7 @@ public class BannerServiceImpl extends GenericService implements BannerService {
 	private UserDao userDaoImpl;
 	
 	@Override
+	@Transactional
 	public TBanner insertBanner(TBanner banner) throws Exception{		
 
 		TUser user = new TUser();
