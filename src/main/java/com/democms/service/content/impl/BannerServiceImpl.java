@@ -30,6 +30,7 @@ public class BannerServiceImpl extends GenericService implements BannerService {
 		bannerDAOImpl.insertBanner(banner);
 		String ssss = SpringPropertyResourceReader.getProperty("mysql.version");
 		System.out.println(">>>>>>"+ssss);
+		//Thread.sleep(30000);
 		userDaoImpl.insertUser(user);
 		return null;
 	}
