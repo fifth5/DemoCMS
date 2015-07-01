@@ -2,34 +2,17 @@
 <!DOCTYPE tiles-definitions PUBLIC   "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd"> 
 
  <tiles-definitions>  
-    <definition name="baselayout" template="/WEB-INF/tiles/baselayout.jsp" preparer="com.cn.ld.framework.web.tiles.CustomerPreparer">  
-        <put-attribute name="title" value="title" />  
-        <put-attribute name="login_user" value="" />  
-        <put-list-attribute name="stylesheets">  
-            <add-attribute value="static/style/main" />  
-        </put-list-attribute>  
-        <put-list-attribute name="scripts">  
-            <add-attribute value="static/js/util" />  
-        </put-list-attribute>  
-    </definition>  
-      
-    <definition name="sublayout" extends="baselayout">  
-        <put-attribute name="login_user" value="/WEB-INF/tiles/loginUser.jsp" />  
-    </definition>  
-      
-    <definition name="title" template="/WEB-INF/tiles/title.jsp">  
-        <put-attribute name="title" value="springmvc3.2" />  
-    </definition>  
-      
-    <definition name="user/login/home" extends="baselayout">  
-        <put-attribute name="title" value="home page" />  
-        <put-attribute name="main" value="/WEB-INF/jsp/user/login/home.jsp" />  
-    </definition>  
-      
-    <definition name="home" extends="baselayout">  
-        <put-attribute name="main" value="/WEB-INF/tiles/loginUser.jsp" />  
-        <put-list-attribute name="scripts" inherit="true">  
-        </put-list-attribute>  
-    </definition>  
+    <definition name="base.definition"  template="/WEB-INF/jsp/layout.jsp"> 
+         <put-attribute name="title" value="" /> 
+         <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" /> 
+         <put-attribute name="menu" value="/WEB-INF/tiles/menu.jsp" /> 
+         <put-attribute name="body" value="" /> 
+         <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" /> 
+     </definition> 
    
+     <definition name="contact" extends="base.definition"> 
+         <put-attribute name="title" value="Contact Manager" /> 
+         <put-attribute name="body" value="/WEB-INF/tiles/contact.jsp" /> 
+     </definition> 
+  
 </tiles-definitions>  

@@ -12,7 +12,7 @@ public class HomeController extends GenericController {
 	@RequestMapping("**")
 	public String indexPage(){
 		System.out.println("page init");
-		return "index";
+		return "layout";
 	}
 	
 }
