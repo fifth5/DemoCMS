@@ -1,2 +1,1 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>  
-<title>springmvc3.2</title>  
+springmvc3.2 这是一个有Apache Tiles构建的页面布局。

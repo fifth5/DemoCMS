@@ -2,7 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC   "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd"> 
 
  <tiles-definitions>  
-    <definition name="base.definition"  template="/WEB-INF/jsp/layout.jsp"> 
+    <definition name="base.definition"  template="/WEB-INF/jsp/layout.jsp" > 
          <put-attribute name="title" value="" /> 
          <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" /> 
          <put-attribute name="menu" value="/WEB-INF/tiles/menu.jsp" /> 
@@ -10,9 +10,8 @@
          <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" /> 
      </definition> 
    
-     <definition name="contact" extends="base.definition"> 
-         <put-attribute name="title" value="Contact Manager" /> 
+     <definition name="contact1" extends="base.definition"> 
          <put-attribute name="body" value="/WEB-INF/tiles/contact.jsp" /> 
      </definition> 
-  
+     
 </tiles-definitions>  
