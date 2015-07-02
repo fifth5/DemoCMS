@@ -28,7 +28,9 @@
        <property name="ignoreUnresolvablePlaceholders" value="true" />  
        <property name="location" value="classpath:properties/config.properties"/>    
    </bean>      
+	
+	<bean id="springFilter" class="com.democms.system.platform.framework.util.CharacterConvert" />
 
 	<import resource="spring-db.xml" />
-	
+		
 </beans>
