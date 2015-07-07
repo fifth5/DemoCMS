@@ -73,10 +73,10 @@
 
 <script type="text/javascript">
 $(function(){
-	/*$("#btn_Login").bind("click",function(){
-		$("#form-signin").action="/login";
-		$("#form-signin").submit();
-	});*/
+    /*$("#btn_Login").bind("click",function(){
+        $("#form-signin").action="/login";
+        $("#form-signin").submit();
+    });*/
 });
 </script>
 
