@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.democms.service.console.ConsoleLoginService;
@@ -20,7 +21,9 @@ public class LoginController {
 	private ConsoleLoginService consoleLoginServiceImpl;
 
 	@RequestMapping("**")
-	public String consoleLoginPage(){
+	public String consoleLoginPage(Model model){
+		
+		model.addAttribute("system", "efadsfadsfas");
 		return "login";
 	}
 	
