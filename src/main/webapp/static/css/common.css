@@ -1,8 +1,3 @@
-@CHARSET "UTF-8";
-
-body {
-  padding-top: 50px;
-}
 
 /* login.jsp */
 .starter-template {
@@ -52,10 +47,18 @@ body {
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+  padding-top: 0px;
+  padding-bottom: 30px;
 }
 
+.container{
+}
 
+.jumbotron{
+	margin-top: 70px;
+	margin-left:auto;
+	margin-right: auto;
+}
 /*
  * Global add-ons
  */
@@ -150,4 +153,13 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+.padding-20{
+	padding: 20px;
+}
+
+
+.well{
+	background: #FFFFFF;
 }

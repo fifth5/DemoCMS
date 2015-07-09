@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.democms.system.platform.framework.util.*" %>
-
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-    hello world. this is the index page.<br/>
-    
-    <%= PageUtil.rootPath  %>
-    
-    <!--<tiles:insertAttribute name="base.definition" />-->
-</body>
-</html>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>   
+<tiles:insertDefinition name="base.default">
+    <tiles:putAttribute name="body"  >
+        <div class="main">
+          <div class="container" style="background: #FFFFFF">
+            <div class="theme-showcase" >
+                <div class="jumbotron">
+                    hello world
+                </div>
+            </div>      
+            <div>
+           	    <div class="row ">
+                    <div class="col-sm-8 ">
+                        <tiles:insertDefinition name="base.default.blogList" />        
+                    </div>
+                    <div class="col-sm-4 ">
+                        <tiles:insertDefinition name="base.default.sideBar"  />  
+                    </div>
+                </div>
+            </div>
+           </div>
+        </div>
+    </tiles:putAttribute>
+</tiles:insertDefinition>

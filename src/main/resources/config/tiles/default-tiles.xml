@@ -16,15 +16,23 @@
      
      
      <definition name="base.default"  template="/WEB-INF/template/default/layout.jsp" > 
-         <put-attribute name="title" value="/WEB-INF/template/default/title.jsp" /> 
-         <put-attribute name="meta" value="/WEB-INF/template/default/meta.jsp" /> 
-         <put-attribute name="style" value="/WEB-INF/template/default/style.jsp" />
-         <put-attribute name="header" value="/WEB-INF/template/default/header.jsp" />
+         <put-attribute name="title" value="/WEB-INF/template/default/tile/title.jsp" /> 
+         <put-attribute name="meta" value="/WEB-INF/template/default/tile/meta.jsp" /> 
+         <put-attribute name="style" value="/WEB-INF/template/default/tile/style.jsp" />
+         <put-attribute name="header" value="/WEB-INF/template/default/tile/header.jsp" />
          <put-attribute name="body" value="" /> 
-         <put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp" />
-         <put-attribute name="script" value="/WEB-INF/template/default/script.jsp" /> 
+         <put-attribute name="footer" value="/WEB-INF/template/default/tile/footer.jsp" />
+         <put-attribute name="script" value="/WEB-INF/template/default/tile/script.jsp" /> 
      </definition>
      
+     <definition name="base.default.sideBar" template="/WEB-INF/template/default/main/sideBar.jsp">
+         <put-attribute name="widget" value="/WEB-INF/template/default/main/widget/default-widget.jsp" />
+     </definition>
+     
+     <definition name="base.default.index" template="/WEB-INF/template/default/index.jsp" />
+     <definition name="base.default.about" template="/WEB-INF/template/default/about.jsp"  />
+     <definition name="base.default.blogList" template="/WEB-INF/template/default/main/blogList.jsp" />
+     <definition name="base.default.widget" template="/WEB-INF/template/default/main/widget/default-widget.jsp" />
      
      
       
