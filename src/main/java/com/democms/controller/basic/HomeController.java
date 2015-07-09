@@ -15,9 +15,14 @@ public class HomeController extends GenericController {
 //		return "index";
 //	}
 	
-	@RequestMapping("/contact")
-	public String contact(){
+	@RequestMapping("/contactPage")
+	public String toContactPage(){
 		return "contact";
+	}
+	
+	@RequestMapping("/aboutPage")
+	public String toAboutPage(){
+		return "about";
 	}
 	
 }

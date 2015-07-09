@@ -25,14 +25,15 @@
          <put-attribute name="script" value="/WEB-INF/template/default/tile/script.jsp" /> 
      </definition>
      
-     <definition name="base.default.sideBar" template="/WEB-INF/template/default/main/sideBar.jsp">
-         <put-attribute name="widget" value="/WEB-INF/template/default/main/widget/default-widget.jsp" />
-     </definition>
-     
      <definition name="base.default.index" template="/WEB-INF/template/default/index.jsp" />
      <definition name="base.default.about" template="/WEB-INF/template/default/about.jsp"  />
      <definition name="base.default.blogList" template="/WEB-INF/template/default/main/blogList.jsp" />
      <definition name="base.default.widget" template="/WEB-INF/template/default/main/widget/default-widget.jsp" />
+     
+     <definition name="base.default.sideBar" template="/WEB-INF/template/default/main/sideBar.jsp">
+         <put-attribute name="widget" value="/WEB-INF/template/default/main/widget/default-widget.jsp" />
+     </definition>
+     
      
      
       
