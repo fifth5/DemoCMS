@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <div class="well padding-20">
+    <div class="well padding-20" style="margin-left: 20px;">
         <div class="row ">
             <div class="col-md-12 padding-left-0 ">
                 <h3 class="margin-top-0">

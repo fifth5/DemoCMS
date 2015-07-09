@@ -1,5 +1,7 @@
 package com.democms.service.content.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -33,5 +35,10 @@ public class BannerServiceImpl extends GenericService implements BannerService {
 		//Thread.sleep(30000);
 		userDaoImpl.insertUser(user);
 		return null;
+	}
+	
+	@Override
+	public List<TBanner> selectBannerList() throws Exception{
+		return bannerDAOImpl.selectBannerList();
 	}
 }

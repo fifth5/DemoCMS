@@ -36,6 +36,9 @@ public class TBanner implements Serializable {
 	@Column(length=45)
 	private String bannerViewName;
 
+	@Column(length=45)
+	private String resourceID;
+	
 	public TBanner() {
 	}
 
@@ -77,6 +80,14 @@ public class TBanner implements Serializable {
 
 	public void setBannerViewName(String bannerViewName) {
 		this.bannerViewName = bannerViewName;
+	}
+
+	public String getResourceID() {
+		return resourceID;
+	}
+
+	public void setResourceID(String resourceID) {
+		this.resourceID = resourceID;
 	}
 
 }
