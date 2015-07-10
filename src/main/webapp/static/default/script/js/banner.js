@@ -1,5 +1,10 @@
 /**
  * 
  */
-
-alert("hello world!");
+$(function(){
+	
+	//$.post();
+	
+	
+	
+})

@@ -50,6 +50,8 @@
 
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
+		<property name="ignoreAcceptHeader" value="true" />
+	   <property name="defaultContentType" value="text/html" /> 
 		<property name="mediaTypes">
 			<map>
 				<entry key="json" value="application/json" />
@@ -57,12 +59,18 @@
 		</property>
 		<property name="defaultViews">
 			<list>
-				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" >
+					<property  name="extractValueFromSingleKeyModel" value="false" /> 
+				</bean>
 			</list>
 		</property>
-		<property name="ignoreAcceptHeader" value="true" />
 	</bean>
-    
+	<!--  
+    <bean id="multipartResolver"   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize" value="10000000000"/>
+	    <property name="maxInMemorySize" value="1024000000" />
+	</bean>
+	-->
     <!-- interceptors -->  
     <mvc:interceptors>  
         <mvc:interceptor>  

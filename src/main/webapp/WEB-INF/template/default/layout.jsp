@@ -5,12 +5,12 @@
     <head>  
         <tiles:insertAttribute name="title" ignore="true" />
         <tiles:insertAttribute name="meta" ignore="true" />
-        <tiles:insertAttribute name="style" ignore="true" />
+        <tiles:insertAttribute name="style" ignore="true" />      
+        <tiles:insertAttribute name="script" ignore="true" /> 
     </head>  
     <body>
         <tiles:insertAttribute name="header"/>  
         <tiles:insertAttribute name="body" />
         <tiles:insertAttribute name="footer" />
     </body> 
-    <tiles:insertAttribute name="script" ignore="true" /> 
 </html>  
