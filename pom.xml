@@ -85,6 +85,7 @@
         </resources>  
                     
 		<plugins>
+			  
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -92,29 +93,10 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-					<!-- 
-				       <compilerArguments>
-				           <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-				       </compilerArguments>
-				     -->
 				</configuration>
-				<executions>
-				  <execution>
-				    <id>log4j-plugin-processor</id>
-				    <goals>
-				      <goal>compile</goal>
-				    </goals>
-				    <phase>process-classes</phase>
-				    <configuration>
-				      <proc>only</proc>
-				      <annotationProcessors>
-				        <annotationProcessor>org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor</annotationProcessor>
-				      </annotationProcessors>
-				    </configuration>
-				  </execution>
-				</executions>
 			</plugin>
-			<plugin>  
+			<!--
+			 <plugin>  
 		   		<groupId>org.apache.maven.plugins</groupId>  
 				<artifactId>maven-resources-plugin</artifactId>  
 		   		<version>2.6</version>  
@@ -122,7 +104,7 @@
 		       		<includeEmptyDirs>false</includeEmptyDirs>  
 		       	</configuration>
        		</plugin>
-       		 				
+       		 -->			
 			<plugin>
 			    <groupId>org.bsc.maven</groupId>
 			    <artifactId>maven-processor-plugin</artifactId>

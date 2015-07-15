@@ -27,14 +27,7 @@ public class BannerServiceImpl extends GenericService implements BannerService {
 	@Override
 	@Transactional
 	public TBanner insertBanner(TBanner banner) throws Exception{		
-
-		TUser user = new TUser();
-		bannerDAOImpl.insertBanner(banner);
-		String ssss = SpringPropertyResourceReader.getProperty("mysql.version");
-		System.out.println(">>>>>>"+ssss);
-		//Thread.sleep(30000);
-		userDaoImpl.insertUser(user);
-		return null;
+		return bannerDAOImpl.insertBanner(banner);
 	}
 	
 	@Override

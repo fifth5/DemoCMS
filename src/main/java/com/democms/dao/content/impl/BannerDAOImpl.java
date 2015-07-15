@@ -14,12 +14,8 @@ import com.democms.system.platform.framework.jpa.Query;
 public class BannerDAOImpl extends GenericDaoImpl implements BannerDAO{
 
 	@Override
-	public void insertBanner(TBanner banner) throws Exception{
-		banner.setBannerName("test");
-		banner.setBannerViewName("testViewName");	
-		//Thread.sleep(300000);
-		this.insert(banner);
-		//throw new RuntimeException();
+	public TBanner insertBanner(TBanner banner) throws Exception{
+		return this.insert(banner);
 	}
 	
 	@Override
