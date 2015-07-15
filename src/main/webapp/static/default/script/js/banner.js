@@ -2,9 +2,10 @@
  * 
  */
 $(function(){
-	
-	//$.post();
-	
-	
-	
+
+    function init(){
+        alert(BASE_PATH);
+    }
+
+    $(init);
 })

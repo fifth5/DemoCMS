@@ -3,7 +3,7 @@
         <div class="row ">
             <div class="col-md-12 padding-left-0 ">
                 <h3 class="margin-top-0">
-                    <a href="javascript:void(0);"> hello world hello world hello world  </a>
+                    <a href="javascript:void(0);"> ${system.path}  dsfasfas  </a>
                 </h3>
                 <ul class="list-inline padding-10">
                     <li><i class="fa fa-calendar"></i> <a href="javascript:void(0);"> March 12, 2015 </a></li>

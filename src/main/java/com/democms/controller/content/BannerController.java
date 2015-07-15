@@ -30,5 +30,13 @@ public class BannerController {
 			model.addAttribute("result", e.getMessage());
 		}
 	}
+
+	public void updateBanner(TBanner banner, Model model){
+		try{
+
+		}catch (Exception e){
+
+		}
+	}
 	
 }

@@ -62,7 +62,7 @@
 	        <id>ace_production</id>  
 	        <properties>  
 				<java.version>1.7</java.version>
-	            <profiles.active>ace_production</profiles.active>  
+	            <profiles.active>development</profiles.active>
 	        </properties>  
 	    </profile>    
 	</profiles>

@@ -22,6 +22,7 @@ public class GenericFilter implements HandlerInterceptor{
 		String path = request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 		system.setRootPath(path);
 		system.setPath(request.getContextPath());
+		System.out.print(system.getRootPath());
 		request.setAttribute("system",system);
 		
 	}

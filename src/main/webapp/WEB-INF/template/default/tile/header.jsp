@@ -12,5 +12,8 @@
     </div>
 </nav>
 
-<script src="${system.path}/static/default/script/js/banner.js"></script>
+
+
+
+<script src="${system.rootPath}/static/default/script/js/banner.js"></script>
 
