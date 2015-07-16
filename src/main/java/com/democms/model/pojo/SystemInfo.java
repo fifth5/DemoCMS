@@ -5,6 +5,7 @@ public class SystemInfo {
 	private String rootPath;
 	private String path;
 	private String serverPath;
+	private String hostURL;
 
 	public String getRootPath() {
 		return rootPath;
@@ -28,5 +29,13 @@ public class SystemInfo {
 
 	public void setServerPath(String serverPath) {
 		this.serverPath = serverPath;
+	}
+
+	public String getHostURL() {
+		return hostURL;
+	}
+
+	public void setHostURL(String hostURL) {
+		this.hostURL = hostURL;
 	}
 }

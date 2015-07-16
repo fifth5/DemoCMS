@@ -28,7 +28,9 @@
        <property name="ignoreUnresolvablePlaceholders" value="true" />  
        <property name="location" value="classpath:properties/config.properties"/>    
    </bean>
-   
+
+    <bean class="com.democms.system.platform.framework.spring.InitialData" />
+
    <import resource="spring-db.xml" />
 		
 </beans>
