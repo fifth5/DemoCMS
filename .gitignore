@@ -1,3 +1,6 @@
 /target/
 /src/metamodel
 /src/metamodel/java/com/democms/model/po
+/.idea/
+/.setting/
+.gitignore
