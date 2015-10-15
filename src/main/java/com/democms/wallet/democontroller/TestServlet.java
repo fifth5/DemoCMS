@@ -1,19 +1,15 @@
-package com.democms.controller.test;
+package com.democms.wallet.democontroller;
 
 import java.io.IOException;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.democms.model.po.TUser;
 import com.democms.service.test.TestService;
 
 

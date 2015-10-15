@@ -1,14 +1,15 @@
 package com.democms.controller.console;
 
-import javax.annotation.Resource;
-
+import com.democms.model.po.TUser;
+import com.democms.service.console.ConsoleLoginService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.democms.service.console.ConsoleLoginService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -22,7 +23,9 @@ public class LoginController {
 
 	@RequestMapping("**")
 	public String consoleLoginPage(Model model){
-		
+		System.out.println(">>>>>>>>> ");
+
+
 		model.addAttribute("system", "efadsfadsfas");
 		return "login";
 	}
@@ -35,8 +38,8 @@ public class LoginController {
 	
 	
 	@RequestMapping("/login")
-	public String login(){
-		consoleLoginServiceImpl.checkUser();
+	public String login(HttpServletRequest request, Model model, TUser user){
+		consoleLoginServiceImpl.checkUser(user);
 		return "console/dashboard";	
 	}
 	

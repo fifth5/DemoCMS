@@ -1,4 +1,4 @@
-package com.democms.controller.test;
+package com.democms.wallet.democontroller;
 
 import javax.annotation.Resource;
 

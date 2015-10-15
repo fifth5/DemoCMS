@@ -14,7 +14,6 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name="t_banner")
-@NamedQuery(name="TBanner.findAll", query="SELECT t FROM TBanner t")
 public class TBanner implements Serializable {
 	private static final long serialVersionUID = 1L;
 

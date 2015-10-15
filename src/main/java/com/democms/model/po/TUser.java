@@ -18,7 +18,6 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name="t_user")
-@NamedQuery(name="TUser.findAll", query="SELECT t FROM TUser t")
 public class TUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 

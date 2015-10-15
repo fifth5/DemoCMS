@@ -13,7 +13,6 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name="t_role")
-@NamedQuery(name="TRole.findAll", query="SELECT t FROM TRole t")
 public class TRole implements Serializable {
 	private static final long serialVersionUID = 1L;
 
