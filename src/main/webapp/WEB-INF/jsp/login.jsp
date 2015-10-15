@@ -72,17 +72,31 @@
                 <input type="checkbox" value="remember-me"> Remember me${system }
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn_Login">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" id="btn_Login">Sign in</button>
     </form>
 </div>
 <!-- /.container -->
 
 <script type="text/javascript">
     $(function () {
-        /*$("#btn_Login").bind("click",function(){
-         $("#form-signin").action="/login";
-         $("#form-signin").submit();
-         });*/
+        $("#btn_Login").bind("click",function(){
+            $.ajax({
+                url:"<%=request.getContextPath()%>/console/checkUser",
+                data:$(".form-signin").serialize(),
+                type:"POST",
+                dataType: "json",
+                success:function(data){
+                    if(data.result){
+                        $(".form-signin").submit();
+                    }else{
+                        alert(data.msgCode);
+                    }
+                }
+
+            });
+
+
+         });
     });
 </script>
 

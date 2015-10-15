@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +13,14 @@
 <body>
     <div>
         <form name="bannerInfoForm">
-            <div></div>
+            <div>
+
+                <c:forEach items="${bannerList}" var="data">
+                    ${data.guid}/${data.bannerId}/${data.bannerName}/${data.bannerURL}/${data.bannerViewName}/${data.resourceID}<br />
+                </c:forEach>
+
+
+            </div>
             <div>bannername:<input type="text" name="bannerName" /></div>
             <div><input type="button" onclick="bannerInsertClick()" value="submit" /></div>
         </form>

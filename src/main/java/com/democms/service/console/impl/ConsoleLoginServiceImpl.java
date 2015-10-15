@@ -5,6 +5,7 @@ import com.democms.model.domain.Result;
 import com.democms.model.po.TUser;
 import com.democms.service.console.ConsoleLoginService;
 import com.democms.system.platform.framework.service.GenericService;
+import com.democms.system.platform.framework.util.MD5Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,23 +17,23 @@ public class ConsoleLoginServiceImpl extends GenericService implements ConsoleLo
 	private UserDao userDaoImpl;
 	
 	@Override
-	public Result checkUser(TUser tUser){
+	public void checkUser(TUser tUser, Result result){
 
-		Result reslut = null;
 
 		if(userDaoImpl.selectUserListByEmail(tUser.getEmail()).size() != 1){
-			reslut.setMsgCode("用户名错误！");
-			return reslut;
+			result.setMsgCode("用户名错误！");
+			result.setResult(false);
+			return;
 		}
 
-		if(userDaoImpl.selectUserListByEmail(tUser.getEmail()).get(0).getPassword().equals(tUser.getPassword())){
-
+		if(!userDaoImpl.selectUserListByEmail(tUser.getEmail()).get(0).getPassword().equals(MD5Util.MD5(tUser.getPassword()))){
+			result.setMsgCode("密码不正确！");
+			result.setResult(false);
+		}else {
+			result.setResult(true);
+			result.setMsgCode("登陆成功！");
 		}
 
-
-
-
-		return reslut;
 	}
 
 }

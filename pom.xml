@@ -93,6 +93,7 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+					<generatedSourcesDirectory>src/metamodel/java</generatedSourcesDirectory>
 				</configuration>
 			</plugin>
 			<!--
@@ -119,7 +120,7 @@
 			            <configuration>
 			                <outputDirectory>src/metamodel/java</outputDirectory>
 					        <processors>
-					          <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
 					        </processors>
 			            </configuration>
 			        </execution>

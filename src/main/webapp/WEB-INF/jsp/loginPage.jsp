@@ -107,7 +107,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
 						<div class="well no-padding">
-							<form action="index.html" id="login-form" class="smart-form client-form">
+							<form action="/console/login" id="login-form" class="smart-form client-form">
 								<header>
 									Sign In
 								</header>
@@ -138,7 +138,7 @@
 									</section>
 								</fieldset>
 								<footer>
-									<button type="submit" class="btn btn-primary">
+									<button type="button" id="btn_Login" class="btn btn-primary">
 										Sign in
 									</button>
 								</footer>
@@ -206,6 +206,24 @@
 			runAllForms();
 
 			$(function() {
+
+				$("#btn_Login").unbind("cllick").bind("click",function(){
+					$.ajax({
+						url:"<%=request.getContextPath()%>/console/checkUser",
+						data:$("#login-form").serialize(),
+						type:"POST",
+						dataType: "json",
+						success:function(data){
+							if(data.result){
+								$("#login-form").submit();
+							}else{
+								alert(data.msgCode);
+							}
+						}
+					});
+				});
+
+
 				// Validation
 				$("#login-form").validate({
 					// Rules for form validation

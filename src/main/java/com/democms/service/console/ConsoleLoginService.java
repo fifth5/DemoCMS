@@ -5,6 +5,6 @@ import com.democms.model.po.TUser;
 
 public interface ConsoleLoginService {
 
-	Result checkUser(TUser user);
+	void checkUser(TUser user,Result result);
 
 }

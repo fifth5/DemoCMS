@@ -1,12 +1,15 @@
 package com.democms.controller.console;
 
+import com.democms.model.domain.Result;
 import com.democms.model.po.TUser;
 import com.democms.service.console.ConsoleLoginService;
+import com.democms.service.content.BannerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +24,16 @@ public class LoginController {
 	@Resource
 	private ConsoleLoginService consoleLoginServiceImpl;
 
+	@Resource
+	private BannerService bannerServiceImpl;
+
 	@RequestMapping("**")
 	public String consoleLoginPage(Model model){
 		System.out.println(">>>>>>>>> ");
 
 
 		model.addAttribute("system", "efadsfadsfas");
-		return "login";
+		return "loginPage";
 	}
 	
 	
@@ -37,10 +43,27 @@ public class LoginController {
 	}
 	
 	
+	@RequestMapping("/checkUser")
+	@ResponseBody
+	public Result checkUser(HttpServletRequest request, Model model, TUser user){
+		Result result =  new Result();
+		consoleLoginServiceImpl.checkUser(user,result);
+		return result;
+	}
+
 	@RequestMapping("/login")
-	public String login(HttpServletRequest request, Model model, TUser user){
-		consoleLoginServiceImpl.checkUser(user);
-		return "console/dashboard";	
+	public String login(HttpServletRequest request, Model model, TUser user) throws Exception {
+		Result result =  new Result();
+		consoleLoginServiceImpl.checkUser(user,result);
+
+		model.addAttribute("result", result);
+
+		if(result.getResult()){
+			model.addAttribute("bannerList",bannerServiceImpl.selectBannerList());
+			return "console/banner";
+		}
+
+		return "login";
 	}
 	
 	

@@ -51,7 +51,7 @@
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
 		<property name="ignoreAcceptHeader" value="true" />
-	   <property name="defaultContentType" value="text/html" /> 
+	    <property name="defaultContentType" value="text/html" />
 		<property name="mediaTypes">
 			<map>
 				<entry key="json" value="application/json" />
