@@ -42,7 +42,12 @@ public class LoginController {
 		return "loginPage";
 	}
 	
-	
+
+	@RequestMapping("/regesterPage")
+	public  String regesterPage(){
+		return "regesterPage";
+	}
+
 	@RequestMapping("/checkUser")
 	@ResponseBody
 	public Result checkUser(HttpServletRequest request, Model model, TUser user){
@@ -60,10 +65,15 @@ public class LoginController {
 
 		if(result.getResult()){
 			model.addAttribute("bannerList",bannerServiceImpl.selectBannerList());
-			return "console/banner";
+			return "console/tiles/layout";
 		}
 
 		return "login";
+	}
+
+	@RequestMapping("/logout")
+	public String logout(){
+		return "loginPage";
 	}
 	
 	
