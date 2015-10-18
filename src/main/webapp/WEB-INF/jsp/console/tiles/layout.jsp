@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en-us" >
 <head>
@@ -106,9 +109,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/console/bannerManager">
+                    <a href="/console/bannerBoard">
                         <i class="fa fa-lg fa-fw fa-inbox"></i>
                         <span class="menu-item-parent">Banner</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/console/articleBoard">
+                        <i class="fa fa-lg fa-fw fa-inbox"></i>
+                        <span class="menu-item-parent">Article</span>
                     </a>
                 </li>
 
@@ -154,6 +163,12 @@
 
         </div>
         <!-- END RIBBON -->
+
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            <tiles:insertAttribute name="consoleBoard"  />
+        </div>
+        <!-- END MAIN CONTENT -->
 
     </div>
     <!-- END MAIN PANEL -->

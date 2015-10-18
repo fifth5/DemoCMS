@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-@RequestMapping("/console")
+@RequestMapping("/login")
 public class LoginController {
 	
 	private static Logger logger = LogManager.getLogger(LoginController.class);
