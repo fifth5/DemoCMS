@@ -3,4 +3,7 @@
 /src/metamodel/java/com/democms/model/po
 /.idea/
 /.setting/
+.classpath
+.project
+DemoCMS.iml
 .gitignore
