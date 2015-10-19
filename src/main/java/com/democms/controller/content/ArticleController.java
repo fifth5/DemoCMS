@@ -22,8 +22,9 @@ public class ArticleController {
 	}
 	
 	@RequestMapping("/articleInsert")
-	public void insertArticle(TArticle article,Model model) throws Exception {
+	public String insertArticle(TArticle article,Model model) throws Exception {
 		ArticleServiceImpl.insertArticle(article);
+        return "/console/articleBoard";
 	}
 
 	@RequestMapping("/articleUpdate")

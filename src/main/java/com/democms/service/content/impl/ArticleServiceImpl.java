@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,6 +22,9 @@ public class ArticleServiceImpl extends GenericService implements ArticleService
 	@Override
 	@Transactional
 	public TArticle insertArticle(TArticle article) throws Exception {
+		article.setDeleted(0);
+		article.setInsertTime(new Date());
+		article.setEditTime(new Date());
 		return articleDAOImpl.insertArticle(article);
 	}
 

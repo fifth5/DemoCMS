@@ -1,5 +1,7 @@
 package com.democms.model.po;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
@@ -15,18 +17,18 @@ public class TArticle implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	@Column(unique=true, nullable=false, length=45)
 	private String guid;
 
 	@Column(length=45)
 	private String arthor;
 
-	@Column(length=1024)
+	@Lob
 	private String content;
 
-	@Lob
-	private String deleted;
+	private int deleted;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date editTime;
@@ -69,11 +71,11 @@ public class TArticle implements Serializable {
 		this.content = content;
 	}
 
-	public String getDeleted() {
+	public int getDeleted() {
 		return this.deleted;
 	}
 
-	public void setDeleted(String deleted) {
+	public void setDeleted(int deleted) {
 		this.deleted = deleted;
 	}
 
