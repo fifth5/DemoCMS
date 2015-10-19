@@ -49,6 +49,10 @@ public abstract class  GenericDaoImpl implements IGenericDao{
 	public <E extends Serializable> List<E> selectList(Query query) {
         return entityManager.createQuery(query.newCriteriaQuery()).getResultList();
     }
+
+	public <E extends Serializable> E selectOne(Query query){
+		return (E)entityManager.createQuery(query.newCriteriaQuery()).getSingleResult();
+	}
 	
 	protected Query getQuery(Class<?> clazz){
 		return Query.forClass(clazz, entityManager);	

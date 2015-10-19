@@ -132,10 +132,8 @@
 
 
         $("#btn_submit").unbind("click").bind("click",function(){
-
             var sHTML = $('.summernote').code();
 
-            alert(sHTML);
 
         });
 

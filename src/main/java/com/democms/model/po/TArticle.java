@@ -25,7 +25,7 @@ public class TArticle implements Serializable {
 	@Column(length=1024)
 	private String content;
 
-	@Column(length=45)
+	@Lob
 	private String deleted;
 
 	@Temporal(TemporalType.TIMESTAMP)
