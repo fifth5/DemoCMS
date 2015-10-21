@@ -3,10 +3,12 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <tiles:insertDefinition name="console.default">
     <tiles:putAttribute name="consoleBoard">
-        <div>
+        <div class="container">
 
 
-
+            <c:forEach items="${bannerList}" var="data">
+                ${data.guid}/${data.bannerId}/${data.bannerName}/${data.bannerURL}/${data.bannerViewName}/${data.resourceID}<br />
+            </c:forEach>
 
 
         </div>

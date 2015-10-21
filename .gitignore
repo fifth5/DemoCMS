@@ -5,5 +5,5 @@
 /.setting/
 .classpath
 .project
-DemoCMS.iml
+*.iml
 .gitignore

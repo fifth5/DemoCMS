@@ -6,8 +6,8 @@
             <form name="bannerInfoForm">
                 <div>
 
-                    <c:forEach items="${bannerList}" var="data">
-                        ${data.guid}/${data.bannerId}/${data.bannerName}/${data.bannerURL}/${data.bannerViewName}/${data.resourceID}<br />
+                    <c:forEach items="${artcileList}" var="data">
+                        ${data.guid}/<br />
                     </c:forEach>
 
 
