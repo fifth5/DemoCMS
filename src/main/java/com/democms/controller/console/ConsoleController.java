@@ -93,6 +93,11 @@ public class ConsoleController {
         return "console/bannerBoard";
     }
 
+    @RequestMapping("/bannerInsertPage")
+    public String bannerInsertPage(HttpServletRequest request, Model model){
+        return "console/bannerInsert";
+    }
+
     @RequestMapping("/articleBoard")
     public String articleBoard(HttpServletRequest request,Model model){
         return "console/articleBoard";

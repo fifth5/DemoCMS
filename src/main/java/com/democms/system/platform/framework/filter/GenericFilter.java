@@ -20,7 +20,7 @@ public class GenericFilter implements HandlerInterceptor{
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-	
+        request.setCharacterEncoding("utf-8");
 		SystemInfo system = new SystemInfo();
 		String path = request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 		system.setRootPath(path);

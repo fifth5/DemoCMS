@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/content/article")
@@ -22,9 +24,10 @@ public class ArticleController {
 	}
 	
 	@RequestMapping("/articleInsert")
-	public String insertArticle(TArticle article,Model model) throws Exception {
+	public String insertArticle(TArticle article,Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ArticleServiceImpl.insertArticle(article);
-        return "/console/articleBoard";
+        model.addAttribute("testChinese","中文测试");
+        return "/console/articleInsert";
 	}
 
 	@RequestMapping("/articleUpdate")

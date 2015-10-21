@@ -6,10 +6,10 @@
         <div class="row">
             <div class=" col-lg-10 ">
                 <div class="widget-body">
-                    <form class="form-horizontal" action="/content/article/articleInsert">
+                    <form class="form-horizontal" action="/content/article/articleInsert" method="post">
 
                         <fieldset>
-                            <legend>Blog</legend>
+                            <legend>Blog ${testChinese}</legend>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Title</label>
 
@@ -108,7 +108,6 @@
 
             </div>
         </div>
-
     </tiles:putAttribute>
 </tiles:insertDefinition>
 <script src="<%=request.getContextPath()%>/static/assets/smartAdmin/js/plugin/summernote/summernote.min.js"></script>

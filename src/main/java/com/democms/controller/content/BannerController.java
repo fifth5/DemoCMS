@@ -22,13 +22,14 @@ public class BannerController {
 	}
 	
 	@RequestMapping("/bannerInsert")
-	public void insertBanner(TBanner entity,Model model) {
+	public String insertBanner(TBanner entity,Model model) {
 		try {
 			TBanner banner = bannerServiceImpl.insertBanner(entity);
 			model.addAttribute("banner", banner);
 		} catch (Exception e) {
 			model.addAttribute("result", e.getMessage());
 		}
+        return "console/bannerInsert";
 	}
 
 	public void updateBanner(TBanner banner, Model model){

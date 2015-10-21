@@ -78,7 +78,6 @@
            <mvc:mapping path="/*" /><!-- 如果不配置或/*,将拦截所有的Controller -->  
            <bean class="com.democms.system.platform.framework.filter.GenericFilter" /> 
         </mvc:interceptor>  
-    </mvc:interceptors>  
-
+    </mvc:interceptors>
 
 </beans>
