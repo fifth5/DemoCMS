@@ -33,15 +33,8 @@
     <bean class="com.democms.system.platform.framework.spring.InitialData" />
 
 
-    <bean id="springFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
-        <property name="encoding">
-            <value>UTF-8</value>
-        </property>
-        <property name="forceEncoding">
-            <value>true</value>
-        </property>
-    </bean>
 
+    <import resource="spring-db.xml" />
+    <import resource="spring-security.xml" />
 
-   <import resource="spring-db.xml" />
 </beans>

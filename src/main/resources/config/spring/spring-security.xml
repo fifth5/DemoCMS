@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.0.xsd
+    ">
+
+    <bean id="springFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
+        <property name="encoding">
+            <value>UTF-8</value>
+        </property>
+        <property name="forceEncoding">
+            <value>true</value>
+        </property>
+    </bean>
+
+
+    <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+        <constructor-arg>
+            <list>
+                <sec:filter-chain pattern="/**" filters="springFilter" />
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
