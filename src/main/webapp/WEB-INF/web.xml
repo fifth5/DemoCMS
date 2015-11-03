@@ -16,6 +16,7 @@
 	<listener> 
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> 
 	</listener> -->
+
 	<context-param>
 		<param-name>log4jConfiguration</param-name>
 		<param-value>/WEB-INF/classes/config/log/log4j2.xml</param-value>
@@ -24,10 +25,6 @@
 		 <!--<listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>-->
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>		 
 	</listener>
-
-
-
-
 
 	<!--
 	 <filter>
@@ -43,24 +40,7 @@
          <dispatcher>ERROR</dispatcher>
      </filter-mapping>
 	-->
-    <!--  filter 中文乱码
-    <filter>
-        <filter-name>charsetFilter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>forceEncoding</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>charsetFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    -->
+
 	<!-- spring listener -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

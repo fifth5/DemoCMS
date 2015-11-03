@@ -3,11 +3,13 @@ package com.democms.controller.console;
 import com.democms.model.domain.Result;
 import com.democms.model.po.TUser;
 import com.democms.service.console.ConsoleLoginService;
+import com.democms.service.content.ArticleService;
 import com.democms.service.content.BannerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,6 +30,9 @@ public class ConsoleController {
 
     @Resource
     private BannerService bannerServiceImpl;
+
+    @Resource
+    private ArticleService articleServiceImpl;
 
     @RequestMapping("**")
     public String consoleLoginPage(Model model){
@@ -100,8 +105,23 @@ public class ConsoleController {
 
     @RequestMapping("/articleBoard")
     public String articleBoard(HttpServletRequest request,Model model){
+        try {
+            model.addAttribute("articleList",articleServiceImpl.selectArticleList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "console/articleBoard";
     }
 
+    @RequestMapping("/articleInsertPage")
+    public String articleInsertPage(HttpServletRequest request,Model model){
+        return "console/articleInsert";
+    }
+
+    @RequestMapping("/{articleId}/articleUpdatePage")
+    public String articleUpdatePage(@PathVariable(value = "articleId") String articleId){
+        System.out.println(">>>>>>>>>>>>>>>"+articleId);
+        return "console/articleUpdate";
+    }
 
 }
