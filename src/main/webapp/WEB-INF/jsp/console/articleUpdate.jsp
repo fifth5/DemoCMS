@@ -6,7 +6,7 @@
         <div class="row">
             <div class=" col-lg-10 ">
                 <div class="widget-body">
-                    <form class="form-horizontal" action="/content/article/articleInsert">
+                    <form class="form-horizontal" action="/content/article/${article.guid}/articleUpdate" method="post">
 
                         <fieldset>
                             <legend>Blog</legend>
@@ -14,7 +14,8 @@
                                 <label class="col-md-2 control-label">Title</label>
 
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" name="title" autocomplete="off">
+                                    <input class="form-control" type="text" name="title" value="${article.title}" autocomplete="off">
+                                    <input class="form-control" type="hidden" name="guid" value="${article.guid}" autocomplete="off">
                                 </div>
                             </div>
 
@@ -56,7 +57,7 @@
                                             <div class="widget-body no-padding">
 
                                                 <div class="summernote" style="display: none;">
-
+                                                    ${article.content}
 
                                                 </div>
                                                 <input type="hidden" name="content" />
@@ -118,4 +119,4 @@
     var basePath = "<%=request.getContextPath()%>";
 
 </script>
-<script src="<%=request.getContextPath()%>/static/script/console/articleBoard.js" ></script>
+<script src="<%=request.getContextPath()%>/static/script/console/articleUpdate.js" ></script>

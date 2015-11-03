@@ -26,6 +26,8 @@ public class ArticleDAOImpl extends GenericDaoImpl implements ArticleDAO {
 	@Override
 	public List<TArticle> selectArticleList(){
 		Query query = this.getQuery(TArticle.class);
+		query.addOrder("insertTime","desc");
+		query.addOrder("editTime","desc");
 		return this.selectList(query);
 	}
 

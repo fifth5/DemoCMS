@@ -16,7 +16,7 @@
     <!-- #CSS Links -->
     <!-- Basic Styles -->
     <link rel="stylesheet" type="text/css" media="screen"
-          href="<%=request.getContextPath()%>/static/assets/bootstrap/css/bootstrap.css">
+          href="<%=request.getContextPath()%>/static/assets/smartAdmin/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" media="screen"
           href="<%=request.getContextPath()%>/static/assets/smartAdmin/css/font-awesome.min.css">

@@ -119,8 +119,8 @@ public class ConsoleController {
     }
 
     @RequestMapping("/{articleId}/articleUpdatePage")
-    public String articleUpdatePage(@PathVariable(value = "articleId") String articleId){
-        System.out.println(">>>>>>>>>>>>>>>"+articleId);
+    public String articleUpdatePage(@PathVariable(value = "articleId") String articleId,Model model){
+        model.addAttribute("article",articleServiceImpl.selectOneArticleById(articleId));
         return "console/articleUpdate";
     }
 

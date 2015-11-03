@@ -11,7 +11,7 @@
                         <th>GUID</th>                
                         <th>Title</th>                
                         <th>Author</th>              
-                        <th>time</th>             
+                        <th>Time</th>             
                     </tr>    
                 </thead>
                 <tbody>
@@ -26,6 +26,7 @@
 
                 </tbody>
             </table>
+            <a href="/console/articleInsertPage">新增</a>
         </div>
     </tiles:putAttribute>
 </tiles:insertDefinition>
@@ -52,7 +53,8 @@
                     "visible": false,
                     "searchable": false
                 }
-            ]
+            ],
+            "order": [[ 3, "desc" ]]
         });
     });
 

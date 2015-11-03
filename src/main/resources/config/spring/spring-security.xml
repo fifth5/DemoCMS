@@ -12,7 +12,7 @@
 
     <bean id="springFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
         <property name="encoding">
-            <value>UTF-8</value>
+            <value>utf-8</value>
         </property>
         <property name="forceEncoding">
             <value>true</value>
