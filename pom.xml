@@ -37,7 +37,7 @@
 		<profile>  
 	        <id>development</id>
 	        <properties>  
-				<java.version>1.7</java.version>
+				<java.version>1.8</java.version>
 				<profiles.active>development</profiles.active> 
 	        </properties> 
 	        <activation>  

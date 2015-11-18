@@ -18,7 +18,7 @@
                     <c:forEach items="${articleList}" var="data">
                     <tr>
                         <td>${data.guid}</td>
-                        <td><a href="/console/${data.guid}/articleUpdatePage">${data.title}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/console/${data.guid}/articleUpdatePage">${data.title}</a></td>
                         <td>${data.arthor}</td>
                         <td><fmt:formatDate value="${data.insertTime}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
                     </tr>

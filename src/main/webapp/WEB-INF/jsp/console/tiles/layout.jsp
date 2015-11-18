@@ -108,13 +108,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/console/bannerBoard">
+                    <a href="<%=request.getContextPath()%>/console/bannerBoard">
                         <i class="fa fa-lg fa-fw fa-inbox"></i>
                         <span class="menu-item-parent">Banner</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/console/articleBoard">
+                    <a href="<%=request.getContextPath()%>/console/articleBoard">
                         <i class="fa fa-lg fa-fw fa-inbox"></i>
                         <span class="menu-item-parent">Article</span>
                     </a>

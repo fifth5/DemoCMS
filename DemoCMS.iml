@@ -38,7 +38,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="" />
+        <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="demodb" value="5329c7c4-56a4-42a9-a234-c401801dee41" />
         </datasource-mapping>
