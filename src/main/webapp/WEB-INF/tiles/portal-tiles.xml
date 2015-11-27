@@ -2,13 +2,13 @@
 <!DOCTYPE tiles-definitions PUBLIC   "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="base.defaultss"  template="/WEB-INF/template/default/layout.jsp" >
-        <put-attribute name="title" value="/WEB-INF/template/default/tile/title.jsp" />
-        <put-attribute name="meta" value="/WEB-INF/template/default/tile/meta.jsp" />
-        <put-attribute name="style" value="/WEB-INF/template/default/tile/style.jsp" />
-        <put-attribute name="header" value="/WEB-INF/template/default/tile/header.jsp" />
+    <definition name="base.portal"  template="/WEB-INF/template/portal/layout.jsp" >
+        <put-attribute name="title" value="/WEB-INF/template/portal/tile/title.jsp" />
+        <put-attribute name="meta" value="/WEB-INF/template/portal/tile/meta.jsp" />
+        <put-attribute name="style" value="/WEB-INF/template/portal/tile/style.jsp" />
+        <put-attribute name="header" value="/WEB-INF/template/portal/tile/header.jsp" />
         <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/template/default/tile/footer.jsp" />
-        <put-attribute name="script" value="/WEB-INF/template/default/tile/script.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/template/portal/tile/footer.jsp" />
+        <put-attribute name="script" value="/WEB-INF/template/portal/tile/script.jsp" />
     </definition>
 </tiles-definitions>
