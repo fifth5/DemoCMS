@@ -21,52 +21,62 @@
  	<context:component-scan base-package="com.democms.system.platform.framework.controller" />
  	<context:component-scan base-package="com.democms.wallet.aop" />
     <context:component-scan base-package="com.democms.wallet.controller" />
- 
+
+    <!-- static resources -->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!-- page mapping -->
+    <mvc:view-controller path="/viewcontroller" view-name="/login"/>
+    <mvc:view-controller path="/" view-name="/index"/>
+
     <!-- ViewResolver -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
 
-	<!-- static resources -->
-	<mvc:resources mapping="/static/**" location="/static/"/>
-		
-	<!-- page mapping -->
- 	<mvc:view-controller path="/viewcontroller" view-name="/login"/>
- 	<mvc:view-controller path="/" view-name="/index"/>
-
 	<!-- apache tiles -->
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="2" />
-	</bean>   
+	</bean>
+
     <!--  <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/"  p:suffix=".jsp" p:order="2"/>  --> 
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">  
         <property name="definitions">  
             <list>  
-                <value>/WEB-INF/default-tiles.xml</value>
-                <value>/WEB-INF/console-tiles.xml</value>
+                <value>/WEB-INF/tiles/default-tiles.xml</value>
+                <value>/WEB-INF/tiles/console-tiles.xml</value>
+                <value>/WEB-INF/tiles/portal-tiles.xml</value>
             </list>  
         </property>  
     </bean>
 
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1" />
+        <property name="contentNegotiationManager" ref="ContentNegotiationManager" />
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" >
+                    <property  name="extractValueFromSingleKeyModel" value="false" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="ContentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name= "favorPathExtension" value= "true" />
+        <property name= "favorParameter" value= "true" />
+        <property name= "parameterName" value= "format"/>
+        <property name= "ignoreAcceptHeader" value= "false"/>
+        <property name= "mediaTypes">
+            <map>
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="application/xml" />
+                <entry key="html" value="text/html" />
+            </map>
+        </property>
+        <property name= "defaultContentType" value= "text/html" />
+    </bean>
 
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="order" value="1" />
-		<property name="ignoreAcceptHeader" value="true" />
-	    <property name="defaultContentType" value="text/html" />
-		<property name="mediaTypes">
-			<map>
-				<entry key="json" value="application/json" />
-			</map>
-		</property>
-		<property name="defaultViews">
-			<list>
-				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" >
-					<property  name="extractValueFromSingleKeyModel" value="false" /> 
-				</bean>
-			</list>
-		</property>
-	</bean>
 
     <bean id="multipartResolver"   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <property name="maxUploadSize" value="10000000000"/>

@@ -5,9 +5,7 @@
     <script src="<%=request.getContextPath()%>/static/assets/angular/angular.min.js" ></script>
 </head>
 <body>
-Your name: <input type="text" ng-model="yourname" placeholder="World">
 <hr>
-Hello {{yourname || 'World'}}!
-中文
+<input type="text" ng-model="plusOne"> + <input type="text" ng-model="plusTwo"> = {{ plusOne + plusTwo }}
 </body>
 </html>
